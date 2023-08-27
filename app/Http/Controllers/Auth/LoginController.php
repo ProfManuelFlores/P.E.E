@@ -43,7 +43,7 @@ class LoginController extends Controller
     protected function login(Request $request)
     {
         $credentials = $request->validate([
-            'name' => 'required|string',
+            'email' => 'required|string',
             'password' => 'required'
         ]);
         if (Auth::attempt($credentials)) {

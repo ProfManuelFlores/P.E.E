@@ -1,4 +1,9 @@
-body{
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.body__login{
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -7,3 +12,52 @@ body{
     background-size: cover;
 }
 
+.main_body__login {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,35rem)); 
+}
+
+.image__holder__login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form__login {
+    padding: 2rem;
+}
+.form__login form{
+    padding: 2rem;
+    background: #ffff;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.form__login label{
+    padding: 1rem 0rem 1rem;
+}
+
+.form__login input{
+    border-radius: 10px;
+    background: #CECCCC;
+}
+
+.form__login__href {
+    @apply ml-auto text-sm text-red-900 hover:underline dark:text-red-700 pt-8 pb-20
+}
+
+.form__login__help1{
+    @apply text-sm font-medium text-gray-500 dark:text-gray-300 pt-8
+}
+.form__login__help2{
+    @apply text-red-900 hover:underline dark:text-red-700
+}
+
+@media (max-width: 910px) {
+    .main_body__login {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0,35rem)); 
+    }
+    
+}

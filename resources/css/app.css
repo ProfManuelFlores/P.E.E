@@ -1,3 +1,35 @@
+@import url('/public/css/EstiloLogin.css');
+@import url('/public/css/Button.css');
+@import url('/public/css/admin/navbar.css');
+@import url('/public/css/admin/home.css');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --primary-color: #FF5C00;
+    --secondary-color: #99120A;
+    --terciary-color: #BCBCBC;
+}
+
+
+.title {
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.subtitle {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.text {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
