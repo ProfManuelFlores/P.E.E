@@ -6,6 +6,11 @@ export default {
   ],
   theme: {
     extend: {},
+    colors:{
+      'primary-color': '#FF671F',
+      'secondary-color': '#693f23',
+      'terciary-color': '#BCBCBC'
+    }
   },
   plugins: [
     require('flowbite/plugin')

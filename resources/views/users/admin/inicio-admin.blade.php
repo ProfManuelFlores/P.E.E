@@ -15,14 +15,7 @@
 
     </header>
     <section>
-        <div class="gradient">
-            <select name="" id="">
-                <option value="+">hola</option>
-                <option value="+">Mundo</option>
-                <option value="+">hola</option>
-                <option value="+">mundo</option>
-            </select>
-        </div>
+        
     </section>
     @include('plantillas.commun.footer')
 </body>
