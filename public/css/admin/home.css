@@ -1,3 +1,23 @@
-option {
-    background: #000;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.home_admin {
+    @apply flex justify-center
+}
+
+.home_top_admin {
+    
+}
+
+.home_botton_admin {
+
+}
+
+.home_botton_admin_present{
+
+}
+
+.home_botton_admin_general{
+
 }

@@ -23,10 +23,21 @@
     @apply hidden w-full md:block md:w-auto p-4
 }
 
-.navbar_content_links a {
-    @apply block py-2 pl-3 pr-4 md:border-0 md:p-0 
+.navbar_content_links_contents {
+    @apply block py-2 pl-3 pr-4 md:border-0 md:p-0 hover:text-white transition duration-300
+}
+
+.navbar_dropwdown {
+    @apply flex items-center justify-between w-full py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:p-0 md:w-auto hover:text-white transition duration-300
 }
 
 .navbar_content_links_normal{
     @apply flex flex-col font-medium p-4 md:p-0 mt-4 border  md:flex-row md:space-x-8  md:border-0
+}
+.navbar_content_dropdown{
+    @apply z-10 hidden font-normal bg-white rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600
+}
+
+.navbar_content_dropdown li{
+    @apply block px-4 py-2  dark:hover:bg-gray-600 dark:hover:text-white hover:bg-primary-color transition duration-300 hover:text-white
 }
