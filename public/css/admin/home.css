@@ -3,21 +3,21 @@
 @tailwind utilities;
 
 .home_admin {
-    @apply flex justify-center
+    @apply flex flex-col content-center items-center p-4
 }
 
 .home_top_admin {
-    
+    @apply p-20
 }
 
 .home_botton_admin {
-
+    @apply flex flex-col items-center
 }
 
 .home_botton_admin_present{
-
+    @apply flex flex-row 
 }
 
 .home_botton_admin_general{
-
+    
 }
