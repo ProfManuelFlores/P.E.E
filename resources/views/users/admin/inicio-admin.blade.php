@@ -22,6 +22,16 @@
             <div class="home_botton_admin">
                 <div class="home_botton_admin_present">
                     <p class="subtitle"> Periodo Actual </p>
+                    <div class="home_botton_admin_present_results">
+                        <p class="subtitle"> Estancias I </p>
+                        <p class="subtitle text-primary-color"> 100 </p>
+                        <p class="text"> alumnos</p>
+                    </div>
+                    <div class="home_botton_admin_present_results">
+                        <p class="subtitle"> Estancias II </p>
+                        <p class="subtitle text-primary-color"> 50</p>
+                        <p class="text"> alumnos</p>
+                    </div>
                 </div>
                 <div class="home_botton_admin_general">
                     <p class="subtitle"> General </p>

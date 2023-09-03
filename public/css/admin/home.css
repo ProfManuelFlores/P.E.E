@@ -7,17 +7,22 @@
 }
 
 .home_top_admin {
-    @apply p-20
+    
 }
 
 .home_botton_admin {
+    width:100%;
     @apply flex flex-col items-center
 }
 
 .home_botton_admin_present{
-    @apply flex flex-row 
+    @apply flex flex-col items-center 
+}
+
+.home_botton_admin_present_results{
+    @apply flex flex-col items-center px-4 py-4
 }
 
 .home_botton_admin_general{
-    
+    @apply flex flex-col
 }
