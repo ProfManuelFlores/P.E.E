@@ -12,14 +12,15 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
     public $timestamps = false;
-
+    protected $primaryKey = "email";
+    public $incrementing = false;
+    public $keyType = 'string';
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
         'email',
         'role',
         'password',
@@ -41,17 +42,16 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
 
     public function DataStudent(){
-        return $this->hasOne(Student::class); 
+        return $this->hasOne(Student::class, 'user'); 
     }
     public function DataAcademic_adviser(){
-        return $this->hasOne(Academic_adviser::class);
+        return $this->hasOne(Academic_adviser::class, 'user');
     }
     public function DataEnterprise_adviser(){
-        return $this->hasOne(Enterprise_adviser::class);
+        return $this->hasOne(Enterprise_adviser::class, 'user');
     }
 }
