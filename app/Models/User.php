@@ -46,12 +46,12 @@ class User extends Authenticatable
     ];
 
     public function DataStudent(){
-        return $this->hasOne(Student::class, 'user'); 
+        return $this->hasOne(Student::class, 'email'); 
     }
     public function DataAcademic_adviser(){
-        return $this->hasOne(Academic_adviser::class, 'user');
+        return $this->hasOne(Academic_adviser::class, 'email');
     }
     public function DataEnterprise_adviser(){
-        return $this->hasOne(Enterprise_adviser::class, 'user');
+        return $this->hasOne(Enterprise_adviser::class, 'email');
     }
 }
