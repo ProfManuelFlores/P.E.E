@@ -15,6 +15,7 @@
     <section>
         <div class="home_alumno">
             <h1>Bienvenido [user]</h1>
+            
         </div>
     </section>
     @include('plantillas.commun.footer')
