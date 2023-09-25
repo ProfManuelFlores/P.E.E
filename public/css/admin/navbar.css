@@ -27,13 +27,6 @@
     @apply flex items-center justify-between w-full py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:p-0 md:w-auto hover:text-white transition duration-300
 }
 
-.navbar_content_links_normal{
-    @apply flex flex-col font-medium p-4 md:p-0 mt-4 border  md:flex-row md:space-x-8  md:border-0
-}
-.navbar_content_dropdown{
-    @apply z-10 hidden font-normal bg-white rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600
-}
-
-.navbar_content_dropdown li{
-    @apply block px-4 py-2  dark:hover:bg-gray-600 dark:hover:text-white hover:bg-primary-color transition duration-300 hover:text-white
+.navbar_content_links_pages {
+    @apply block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-white md:p-0 dark:text-white md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent
 }
