@@ -8,13 +8,13 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
-    @include('plantillas.admin.navbar')
+    @include('plantillas.alumno.navbar')
     <header>
         
     </header>
     <section>
-        <div>
-            
+        <div class="home_alumno">
+            <h1>Bienvenido [user]</h1>
         </div>
     </section>
     @include('plantillas.commun.footer')
