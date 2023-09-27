@@ -15,7 +15,7 @@
         <div class="hidden w-full md:block md:w-auto" id="navbar-default">
             <ul class="navbar_content_links_contents">
                 <li>
-                    <a href="#" class="navbar_content_links_pages">Usuarios</a>
+                    <a href="{{route('SeeAllUsersRoute')}}" class="navbar_content_links_pages">Usuarios</a>
                 </li>
                 <li>
                     <a href="#" class="navbar_content_links_pages">Registros</a>

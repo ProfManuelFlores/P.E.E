@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .home_alumno{
-
+    @apply flex items-center justify-center
 }
 
 .home_alumno_content{
