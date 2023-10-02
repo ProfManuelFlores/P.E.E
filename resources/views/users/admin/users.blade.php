@@ -49,21 +49,36 @@
             </table>
         </div>
         <div class="options_user">
-            <p class="subtitle py-12 text-center">Crear Usuario</p>
-            <form action="" class="text-center">
-                <div class="grid text-center p-2 md:space-x-4 md:grid-cols-2">
+            <p class="subtitle py-12 text-center">Crear Usuario (Unico)</p>
+            <form action="{{route('CreateUserIn')}}" method="POST" class="text-center">
+                @csrf
+                <div class="NewUserForm">
                     <div>
-                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Correo Electronico</label>
-                        <input type="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                        <label for="email" class="NewUserForm_Label">Correo Electronico</label>
+                        <input type="email" id="email" name="email" class="NewUserForm_Input" required>
                     </div>
                     <div>
-                        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contraseña</label>
-                        <input type="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>  
+                        <label for="password" class="NewUserForm_Label">Contraseña</label>
+                        <input type="password" id="password" name="password" class="NewUserForm_Input" required>  
+                    </div>
+                    <div>
+                        <label for="role" class="NewUserForm_Label">Tipo de usuario</label>
+                        <select name="role" id="role">
+                            <option value=1>Administrador</option>
+                            <option value=2>Alumno</option>
+                            <option value=3>Asesor Empresarial</option>
+                            <option value=4>Asesor Academico</option>
+                        </select>
                     </div>
                 </div> 
                 <div class="py-4">
                     <button class="button">+ Crear Usuario</button>
                 </div>
+            </form>
+            <p class="subtitle py-12 text-center">Crear Usuarios (Multiples) </p>
+            <form action="" method="POST" class="text-center block">
+                <label for="file" class="NewUserForm_Label">Archivo csv</label>
+                <input type="file" name="" id="" class="py-2">
             </form>
         </div>
     </section>
