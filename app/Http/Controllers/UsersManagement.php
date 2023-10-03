@@ -17,7 +17,11 @@ class UsersManagement extends Controller
         return view('users.admin.users',compact('allusers'));
     }
 
-    public function SeeOneDataUser(Request $request){
+    public function UpdateDataUser(Request $request){
+
+    }
+
+    public function disableUser(Request $request){
         
     }
 

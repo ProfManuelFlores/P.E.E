@@ -33,13 +33,14 @@
                     </tr>
                 </thead>
                 <tbody class="body_table">
-                    @foreach ($allusers as $user)
+                    @foreach ($allusers as $index => $user)
                         <tr>
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->role }}</td>
                             <td>
                                 <div class="action_buttons">
-                                    <button class="button">Editar</button>
+                                    @include('plantillas.commun.modal-form-edituser')
+                                    <button class="button" data-modal-target="authentication-modal{{$index}}" data-modal-toggle="authentication-modal{{$index}}">Editar</button>
                                     <button class="button">Eliminar</button>
                                 </div>
                             </td>
