@@ -9,4 +9,5 @@ class StatusDoc extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $table = "statusdoc";
 }

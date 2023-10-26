@@ -9,4 +9,6 @@ class Format extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $table = "format";
+    protected $primaryKey = "IdFormats";
 }

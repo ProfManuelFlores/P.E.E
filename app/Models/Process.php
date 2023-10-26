@@ -11,6 +11,8 @@ class Process extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $table = "process";
+    protected $primaryKey = "IdProcess";
 
     public function DataDocuments(){
         return $this->hasMany(Detail_Document::class,'IdDoc');
@@ -30,9 +32,5 @@ class Process extends Model
     public function DataPeriod(): BelongsTo
     {
         return $this->belongsTo(Period::class, 'IdPeriod');
-    }
-    public function DataEnterprise(): BelongsTo
-    {
-        return $this->belongsTo(Enterprise::class, 'Rcf');
     }
 }

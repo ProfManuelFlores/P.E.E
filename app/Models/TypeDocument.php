@@ -9,4 +9,7 @@ class TypeDocument extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $table = "typedocument";
+    protected $primaryKey = "IdTypeDoc";
+    
 }

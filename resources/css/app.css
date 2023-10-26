@@ -4,7 +4,9 @@
 @import url('/public/css/admin/navbar.css');
 @import url('/public/css/admin/home.css');
 @import url('/public/css/admin/usermanagement.css');
+@import url('/public/css/admin/formatpage.css');
 @import url('/public/css/alumno/home.css');
+@import url('/public/css/alumno/documentos.css');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

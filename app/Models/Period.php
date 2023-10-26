@@ -9,4 +9,6 @@ class Period extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $table = "period";
+    protected $primaryKey = "IdPeriod";
 }

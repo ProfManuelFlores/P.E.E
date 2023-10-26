@@ -18,10 +18,24 @@ class UsersManagement extends Controller
     }
 
     public function UpdateDataUser(Request $request){
-
+        try{
+            $this->validate(request(), [
+                'role'  => 'numeric',
+                'password' => ['min:8'],
+            ]);
+            $userUpdate = User::find(request(['email']))->first();
+            $userUpdate->role = request('role');
+            $userUpdate->password = request('password');
+            $userUpdate->save();
+            return redirect('/ListUser')->with('sucess','se ha modificado los datos con exito');
+        } catch (Exception $e) {
+            $error = $e->getMessage();
+            return redirect('/ListUser')->with('error',$error);
+        }
     }
 
-    public function disableUser(Request $request){
+    public function StatusUser(Request $request){
+        $userUpdateStatus = User::find(request(['email']))->first();
         
     }
 

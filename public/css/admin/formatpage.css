@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.Format_admin_contents{
+    @apply relative overflow-x-auto py-10 md:flex justify-center
+}
+
+.Format_admin_contents_head{
+    @apply py-2  md:py-6 border border-primary-color
+}
+
+
+.Format_admin_contents_rows{
+    @apply py-2  md:py-6 border border-black
+}

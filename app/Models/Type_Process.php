@@ -9,4 +9,6 @@ class Type_Process extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $table = 'type_process';
+    protected $primaryKey = "IdProcess";
 }

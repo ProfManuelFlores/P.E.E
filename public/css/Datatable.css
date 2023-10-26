@@ -12,7 +12,7 @@
 }
 
 .head_table{
-    @apply bg-primary-color text-white
+    @apply bg-primary-color text-white border-solid border-black
 }
 
 .body_table{

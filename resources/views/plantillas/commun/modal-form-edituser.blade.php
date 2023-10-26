@@ -17,7 +17,8 @@
             </button>
             <div class="px-6 py-6 lg:px-8">
                 <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Editando usuario {{ $user->email }}</h3>
-                <form class="space-y-6" action="#">
+                <form class="space-y-6" action="{{route('UpdateUser')}}" method="POST">
+                    @csrf
                     <div>
                         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
                             email</label>

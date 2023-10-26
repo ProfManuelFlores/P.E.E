@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.Documentos_alumno_contents{
+    @apply relative overflow-x-auto py-10 md:flex justify-center
+}
+
+.Documentos_alumno_contents_rows{
+    @apply py-2 px-3 md:py-6 
+}
+
+.Documentos_alumno_contents_rows_input{
+    @apply border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-color focus:border-primary-color dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
+}

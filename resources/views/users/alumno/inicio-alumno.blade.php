@@ -14,10 +14,22 @@
     </header>
     <section>
         <div class="home_alumno">
-            <p class="title">Bienvenido [user]</p>
-
+            <p class="title py-4">Bienvenido</p>
+            <div class="home_alumno_contents">
+                @foreach ($procesos as $proceso)
+                <a href="{{route('documentos_alumno',$proceso->IdProcess)}}">
+                    <div class="container_alumno_cards">
+                        <img src="{{ asset('svg/document-icon.svg') }}" alt="icon document">
+                        <p class="py-5">{{$proceso->Desc_Process}}</p>
+                    </div>
+                </a>
+                @endforeach
+            </div>
+            <div class="grid justify-items-center">
+                <p class="title py-4">Guia de usuario</p>
+                <embed class="w-full px-2 py-10 aspect-[2/3]" src="{{asset('formats/'.$formatos->NameFile)}}">
+            </div>
         </div>
     </section>
-    @include('plantillas.commun.footer')
 </body>
 </html>

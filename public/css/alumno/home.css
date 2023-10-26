@@ -3,17 +3,13 @@
 @tailwind utilities;
 
 .home_alumno{
-    @apply flex items-center justify-center
+    @apply grid text-center items-center
 }
 
-.home_alumno_content{
-    
+.home_alumno_contents{
+    @apply grid grid-cols-2 py-10 md:flex justify-between md:p-20
 }
 
-.home_alumno_card{
-
-}
-
-.home_alumno_card_content{
-
+.container_alumno_cards{
+    @apply grid justify-center py-10 place-items-center
 }

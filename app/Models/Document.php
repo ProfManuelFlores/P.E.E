@@ -10,12 +10,10 @@ class Document extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    public function DataTypeDoc(): BelongsTo
+    protected $table = "document";
+
+    public function detalledoc()
     {
-        return $this->belongsTo(TypeDocument::class, 'IdTypeDoc');
-    }
-    public function DataStatusDoc(): BelongsTo
-    {
-        return $this->belongsTo(StatusDoc::class,'IdStatusDoc');
+        return $this->hasOne(Detail_Document::class, 'IdDoc', 'IdDoc');
     }
 }

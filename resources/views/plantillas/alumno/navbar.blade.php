@@ -15,16 +15,16 @@
         <div class="hidden w-full md:block md:w-auto" id="navbar-default">
             <ul class="navbar_content_links_contents">
                 <li>
-                    <a href="#" class="navbar_content_links_pages">Usuarios</a>
+                    <a href="{{route('alumno')}}" class="navbar_content_links_pages">Inicio</a>
                 </li>
                 <li>
-                    <a href="#" class="navbar_content_links_pages">Registros</a>
+                    <a href="#" class="navbar_content_links_pages">aaaaaaa</a>
                 </li>
                 <li>
-                    <a href="#" class="navbar_content_links_pages">Formatos</a>
+                    <a href="#" class="navbar_content_links_pages">Empresas</a>
                 </li>
                 <li>
-                    <a href="#" class="navbar_content_links_pages">Periodos</a>
+                    <a href="#" class="navbar_content_links_pages">Perfil</a>
                 </li>
                 <li>
                     <a class="navbar_content_links_pages" href="{{ route('logout') }}"
@@ -41,3 +41,4 @@
         </div>
     </div>
 </nav>
+@include('sweetalert::alert')

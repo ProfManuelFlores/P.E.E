@@ -15,16 +15,16 @@
         <div class="hidden w-full md:block md:w-auto" id="navbar-default">
             <ul class="navbar_content_links_contents">
                 <li>
-                    <a href="{{route('SeeAllUsersRoute')}}" class="navbar_content_links_pages">Usuarios</a>
+                    <a href="{{ route('SeeAllUsersRoute') }}" class="navbar_content_links_pages">Usuarios</a>
                 </li>
                 <li>
                     <a href="#" class="navbar_content_links_pages">Registros</a>
                 </li>
                 <li>
-                    <a href="#" class="navbar_content_links_pages">Formatos</a>
+                    <a href="{{ route('formats') }}" class="navbar_content_links_pages">Formatos</a>
                 </li>
                 <li>
-                    <a href="#" class="navbar_content_links_pages">Periodos</a>
+                    <a href="{{ route('periods') }}" class="navbar_content_links_pages">Periodos</a>
                 </li>
                 <li>
                     <a class="navbar_content_links_pages" href="{{ route('logout') }}"
