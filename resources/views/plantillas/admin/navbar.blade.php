@@ -18,7 +18,7 @@
                     <a href="{{ route('SeeAllUsersRoute') }}" class="navbar_content_links_pages">Usuarios</a>
                 </li>
                 <li>
-                    <a href="#" class="navbar_content_links_pages">Registros</a>
+                    <a href="{{ route('processinfo') }}" class="navbar_content_links_pages">Registros</a>
                 </li>
                 <li>
                     <a href="{{ route('formats') }}" class="navbar_content_links_pages">Formatos</a>

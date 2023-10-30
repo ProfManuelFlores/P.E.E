@@ -40,7 +40,8 @@
                             <td>
                                 <div class="action_buttons">
                                     @include('plantillas.commun.modal-form-edituser')
-                                    <button class="button" data-modal-target="authentication-modal{{$index}}" data-modal-toggle="authentication-modal{{$index}}">Editar</button>
+                                    <button class="button" data-modal-target="authentication-modal{{ $index }}"
+                                        data-modal-toggle="authentication-modal{{ $index }}">Editar</button>
                                     <button class="button">Eliminar</button>
                                 </div>
                             </td>
@@ -51,7 +52,7 @@
         </div>
         <div class="options_user">
             <p class="subtitle py-12 text-center">Crear Usuario (Unico)</p>
-            <form action="{{route('CreateUserIn')}}" method="POST" class="text-center">
+            <form action="{{ route('CreateUserIn') }}" method="POST" class="text-center">
                 @csrf
                 <div class="NewUserForm">
                     <div>
@@ -60,7 +61,7 @@
                     </div>
                     <div>
                         <label for="password" class="NewUserForm_Label">Contraseña</label>
-                        <input type="password" id="password" name="password" class="NewUserForm_Input" required>  
+                        <input type="password" id="password" name="password" class="NewUserForm_Input" required>
                     </div>
                     <div>
                         <label for="role" class="NewUserForm_Label">Tipo de usuario</label>
@@ -71,7 +72,7 @@
                             <option value=4>Asesor Academico</option>
                         </select>
                     </div>
-                </div> 
+                </div>
                 <div class="py-4">
                     <button class="button">+ Crear Usuario</button>
                 </div>

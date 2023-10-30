@@ -64,7 +64,7 @@ class Estancia extends Controller
             return redirect('/documentos_proceso/'.$PageProcess);
         }
     }
-    public function UploadDocument(Request $request, $PageProcess){
+    public function UploadDocument(Request $request, $PageProcess,$formatdesired){
         $ProcessUploadDocument = Process::find(Auth::user()->email . $PageProcess);
         if($ProcessUploadDocument == true){
             try{
@@ -74,12 +74,12 @@ class Estancia extends Controller
                     $archivo->move($path,$_FILES['doc']['name']);
                     $document = new Document();
                     $detail_document = new Detail_Document();
-                    $document->IdTypeDoc = 0;
+                    $document->IdTypeDoc = $formatdesired;
                     $document->IdStatusDoc = 0;
                     $document->NameFile =$_FILES['doc']['name'];
                     $document->save();
                     $detail_document->IdDoc = $document->getKey();
-                    $detail_document->IdProcess = Auth::user()->email . $PageProcess;
+                    $detail_document->IdPro = Auth::user()->email . $PageProcess;
                     $detail_document->save();
                     Alert::Success('EXITO!','tu documento se ha subido');
                     return redirect('/documentos_proceso/'.$PageProcess);

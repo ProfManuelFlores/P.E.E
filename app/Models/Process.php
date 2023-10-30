@@ -17,9 +17,8 @@ class Process extends Model
     public function DataDocuments(){
         return $this->hasMany(Detail_Document::class,'IdDoc');
     }
-    public function DataTypeProcess(): BelongsTo
-    {
-        return $this->belongsTo(Type_Process::class, 'IdTypeProcess');
+    public function DataTypeProcess(){
+        return $this->hasOne(Type_Process::class, 'IdProcess');
     }
     public function DataEntreprise(): BelongsTo
     {

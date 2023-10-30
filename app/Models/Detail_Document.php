@@ -16,4 +16,8 @@ class Detail_Document extends Model
     {
         return $this->belongsTo(Proceso::class, 'IdProceso', 'IdProceso');
     }
+
+    public function DataDocument(){
+        return $this->hasOne(Document::class,'IdDocuments','IdDoc');
+    }
 }

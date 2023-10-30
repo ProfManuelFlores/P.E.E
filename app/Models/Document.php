@@ -11,6 +11,7 @@ class Document extends Model
     use HasFactory;
     public $timestamps = false;
     protected $table = "document";
+    protected $primaryKey = "IdDocuments";
 
     public function detalledoc()
     {

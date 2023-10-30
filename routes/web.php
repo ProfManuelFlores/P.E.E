@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DocumentManagement;
 use App\Http\Controllers\Estancia;
 use App\Http\Controllers\FormatsManagement;
 use App\Http\Controllers\PeriodManagement;
@@ -83,6 +84,20 @@ Route::post('/UpdateFormat/{id}', [FormatsManagement::class, 'UpdateFormat'])
 ->name('UpdateFormat')
 ->middleware('admin');
 
+Route::get('/documentsStudent/{IdProcess}',[DocumentManagement::class, 'findAllDocuments'])
+->name('SearchDocumentStudent')
+->middleware('admin');
+
+Route::get('/changestatus/{doc}/{status}',[DocumentManagement::class, 'ChangeStatus'])
+->name('changestatus')
+->middleware('admin');
+
+Route::post('/savecomment/{doc}',[DocumentManagement::class, 'DoObservation'])
+->name('savecomment')
+->middleware('admin');
+
+
+
 Route::get('/descargar_formato/{id}', [Estancia::class, 'DownloadFormat'])
 ->name('Descargar_formato');
 
@@ -90,13 +105,12 @@ Route::get('/SingupPeriod/{PageProcess}', [Estancia::class, 'SignupPeriod'])
 ->name('SingupPeriod')
 ->middleware('alumno');
 
-Route::post('/UploadDocument/{PageProcess}',[Estancia::class, 'UploadDocument'])
+Route::post('/UploadDocument/{PageProcess}/{format}',[Estancia::class, 'UploadDocument'])
 ->name('UploadDocument')
 ->middleware('alumno');
 
 Route::get('/seeDocument/{NameFile}',[Estancia::class, 'SeeDocument'])
-->name('SeeDocument')
-->middleware('alumno');
+->name('SeeDocument');
 
 /*
 ------------------------------------------
@@ -118,21 +132,27 @@ Route::get('/ListPeriod',  function(){
     return view('users.admin.periodsmanagement',compact('periodos'));
 })->name('periods')->middleware('admin');
 
+Route::get('/ProcessStudents', function(){
+    $processinfos = Process::all();
+    $typeprocess = Type_Process::all();
+    return view('users.admin.studentsprocess', compact('processinfos','typeprocess'));
+})->name('processinfo')->middleware('admin');
+
 Route::get('/documentos_proceso/{IdProcess}', function($IdProcess){
     $formatos=TypeDocument::all();
     $proceso=Type_Process::find($IdProcess);
-    $ProcesoAlumno=Process::find(Auth::user()->email . $IdProcess);
+    $ProcesoAlumno=Process::where('IdProcess',Auth::user()->email . $IdProcess)->where('IdTypeProcess',$IdProcess)->first();
     $DocumentosAlumno=DB::table('document')
     ->join('detail_document', 'document.IdDocuments', "=", 'detail_document.IdDoc')
     ->join('process', 'process.IdProcess', "=", "detail_document.IdPro")
     ->where('IdTypeProcess', $IdProcess)
     ->where('IdPro', Auth::user()->email . $IdProcess)
     ->get();
-    $processperiod = Period::find($ProcesoAlumno->IdPeriod);
     $statusDoc=StatusDoc::all();
     if($ProcesoAlumno==true){
+        $processperiod = Period::find($ProcesoAlumno->IdPeriod)->first();
         return view('users.alumno.documentos',compact('formatos','proceso','ProcesoAlumno','DocumentosAlumno','statusDoc','processperiod'));
     } else{
-        return view('users.alumno.documentos',compact('formatos','proceso'));
+        return view('users.alumno.documentos',compact('formatos','proceso','DocumentosAlumno'));
     }
 })->name('documentos_alumno')->middleware('alumno');

@@ -20,7 +20,7 @@
     <section>
         <div>
             <p class="title text-center py-10"> Documentos de {{ $proceso->Desc_Process }}</p>
-            <a href="{{route('SingupPeriod',$proceso->IdProcess)}}" class="flex justify-center">
+            <a href="{{ route('SingupPeriod', $proceso->IdProcess) }}" class="flex justify-center">
                 <button class="button"> Alta en periodo </button>
             </a>
         </div>
@@ -49,36 +49,51 @@
                                         @if ($doc->IdTypeDoc == $formato->IdTypeDoc)
                                             @foreach ($statusDoc as $status)
                                                 @if ($doc->IdStatusDoc == $status->IdStatus)
-                                                    <button class="button" disabled>{{$status->Desc_Status}}</button>
+                                                    <button class="button-{{ $doc->IdStatusDoc }}"
+                                                        disabled>{{ $status->Desc_Status }}</button>
                                                 @endif
                                             @endforeach
                                         @endif
                                     @endforeach
                                 </td>
                                 <td class="flex Documentos_alumno_contents_rows">
-                                    <form action="{{route('UploadDocument',$proceso->IdProcess)}}" method="post" enctype="multipart/form-data">
-                                        @csrf
-                                            @foreach ($DocumentosAlumno as $doc)
-                                                @if ($doc->IdTypeDoc == $formato->IdTypeDoc)
-                                                <a href="{{route('SeeDocument',$doc->NameFile)}}" class="button">ver documento</a>
-                                                    <input type="text" value="{{ $doc->NameFile }}" class="border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-color focus:border-primary-color dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-color dark:focus:border-primary-color">
-                                                    @if ($doc->IdStatusDoc != 1)
-                                                        <button class="button">Cancelar</button>
-                                                    @endif
-                                                @else
-                                                    @if (($formato->IdTypeDoc == 0 || $formato->IdTypeDoc == 1) && $processperiod->Phase1 == 1)
-                                                        <input type="file" name="doc" id="doc">
-                                                        <button class="button">Enviar</button>
-                                                    @elseif (($formato->IdTypeDoc == 2 || $formato->IdTypeDoc == 3) && $processperiod->Phase2 == 1)
-                                                        <input type="file" name="doc" id="doc">
-                                                        <button class="button">Enviar</button>
-                                                    @elseif (($formato->IdTypeDoc == 4 || $formato->IdTypeDoc == 5) && $processperiod->Phase3 == 1)
-                                                        <input type="file" name="doc" id="doc">
-                                                        <button class="button">Enviar</button>
+                                    @if (count($DocumentosAlumno->where('IdTypeDoc', $formato->IdFormat)) == 0)
+                                        <form
+                                            action="{{ route('UploadDocument', [$proceso->IdProcess, $formato->IdFormat]) }}"
+                                            method="post" enctype="multipart/form-data">
+                                            @csrf
+                                            @if (($formato->IdTypeDoc == 0 || $formato->IdTypeDoc == 1) && $processperiod->Phase1 == 1)
+                                                <input type="file" name="doc" id="doc">
+                                                <button class="button">Enviar</button>
+                                            @elseif (($formato->IdTypeDoc == 2 || $formato->IdTypeDoc == 3) && $processperiod->Phase2 == 1)
+                                                <input type="file" name="doc" id="doc">
+                                                <button class="button">Enviar</button>
+                                            @elseif (($formato->IdTypeDoc == 4 || $formato->IdTypeDoc == 5) && $processperiod->Phase3 == 1)
+                                                <input type="file" name="doc" id="doc">
+                                                <button class="button">Enviar</button>
+                                            @endif
+                                        </form>
+                                    @else
+                                        @foreach ($DocumentosAlumno as $index => $doc)
+                                            @if ($doc->IdTypeDoc == $formato->IdTypeDoc)
+                                                <a href="{{ route('SeeDocument', $doc->NameFile) }}" class="button">ver
+                                                    documento</a>
+                                                <input type="text" value="{{ $doc->NameFile }}"
+                                                    class="border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-color focus:border-primary-color dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-color dark:focus:border-primary-color">
+                                                @if ($doc->IdStatusDoc != 1)
+                                                    <button class="button">Cancelar</button>
+                                                    @if ($doc->IdStatusDoc == 2)
+                                                        <a data-modal-target="authentication-modal{{ $index }}"
+                                                            data-modal-toggle="authentication-modal{{ $index }}"
+                                                            class="button-2">
+                                                            Observacion
+                                                        </a>
+                                                        @include('plantillas.commun.modal-form-comments')
                                                     @endif
                                                 @endif
-                                            @endforeach
-                                    </form>
+                                            @endif
+                                        @endforeach
+                                    @endif
                                 </td>
                             </tr>
                         @endif
