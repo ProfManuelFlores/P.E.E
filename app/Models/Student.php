@@ -11,13 +11,14 @@ class Student extends Model
     use HasFactory;
     public $timestamps = false;
     protected $table = 'student';
+    protected $primaryKey = 'user';
     public function Datacarrier(){
         return $this->hasOne(carrier::class);
     }
 
     public function DataUser(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'user');
+        return $this->belongsTo(User::class, 'user' , 'email');
     }
 }
 

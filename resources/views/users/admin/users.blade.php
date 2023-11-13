@@ -78,9 +78,11 @@
                 </div>
             </form>
             <p class="subtitle py-12 text-center">Crear Usuarios (Multiples) </p>
-            <form action="" method="POST" class="text-center block">
+            <form action="{{ route('CreateUserMul')}}" method="POST" class="text-center block" enctype="multipart/form-data">
+                @csrf
                 <label for="file" class="NewUserForm_Label">Archivo csv</label>
-                <input type="file" name="" id="" class="py-2">
+                <input type="file" name="CSV" id="CSV" class="py-2">
+                <button class="button-1">Agregar masivamente</button>
             </form>
         </div>
     </section>

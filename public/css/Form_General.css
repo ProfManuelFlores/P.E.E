@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.form_general{
+    @apply p-10
+}
+
+.form_general input{
+    border-radius:10px;
+    @apply w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+}
+
+.form_general select{
+    border-radius:10px;
+    @apply w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+}
+
+.form_general label{
+    @apply block mb-2 text-sm font-medium text-gray-900 
+}
+
+.form_general option{
+    border-radius:10px;
+    @apply w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+}

@@ -9,4 +9,5 @@ class Degree extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $table = "degree";
 }

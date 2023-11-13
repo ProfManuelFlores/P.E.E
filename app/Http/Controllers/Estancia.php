@@ -84,7 +84,7 @@ class Estancia extends Controller
                     Alert::Success('EXITO!','tu documento se ha subido');
                     return redirect('/documentos_proceso/'.$PageProcess);
                 }else {
-                    Alert::error('Error','ha ocurrido un error, no se encuentra el archivo, favor de intentar de nuevo en unos momentos');
+                    Alert::Error('Error','ha ocurrido un error, no se encuentra el archivo, favor de intentar de nuevo en unos momentos');
                     return redirect('/documentos_proceso/'.$PageProcess);
                 }
             }catch(Exception $e){

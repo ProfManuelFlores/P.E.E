@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use League\Csv\Reader;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UsersManagement extends Controller
 {
@@ -55,37 +56,39 @@ class UsersManagement extends Controller
     }
 
     public function CreateUsersMassive(Request $request){
-        try{
-            if($request->hasFile('CSV')){
+        try {
+            if ($request->hasFile('CSV')) {
+                set_time_limit(0);
                 $csv = Reader::createFromPath($request->file('CSV')->path());
                 $csv->setHeaderOffset(0);
                 $batchSize = 1000; // Número de filas a procesar en cada lote
                 $records = $csv->getRecords();
                 $batch = [];
                 $rowCount = 0;
-                foreach($records as $record){
-                    $usuario = User::where('email', $record['email'])->first();
-                    if(!$usuario){
-                        $batch[] = [
-                            'email' => $record['email'],
-                            'rol' => $record['rol'],
-                            'password' => bcrypt($record['matricula'])
-                        ];
-                    }
+        
+                foreach ($records as $record) {
+                    User::firstOrCreate(
+                        ['email' => $record['email']],
+                        [
+                            'role' => $record['rol'],
+                            'password' => Hash::make($record['matricula'])
+                        ]
+                    );
+        
                     $rowCount++;
-                    if($rowCount == $batchSize){
-                        User::insert($batch);
+        
+                    if ($rowCount == $batchSize) {
                         $rowCount = 0;
                     }
                 }
-                if ($rowCount > 0) {
-                    User::insert($batch);
-                }
-                return redirect('/ListUser')->with('sucess','Los usuarios han sido agregados con exito!');
+        
+                Alert::Success('Éxito', 'Todos los usuarios han sido agregados');
+                return redirect('/ListUser');
             }
-        } catch (Exception $e){
+        } catch (Exception $e) {
             $error = $e->getMessage();
-            return redirect('/ListUser')->with('error',$error);
+            Alert::Error('Error', $error);
+            return redirect('/ListUser');
         }
     }
 }

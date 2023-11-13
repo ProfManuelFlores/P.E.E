@@ -9,4 +9,5 @@ class carrier extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $table = "carrier";
 }

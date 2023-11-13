@@ -5,12 +5,17 @@ use App\Http\Controllers\Estancia;
 use App\Http\Controllers\FormatsManagement;
 use App\Http\Controllers\PeriodManagement;
 use App\Http\Controllers\UsersManagement;
+use App\Http\Controllers\profile;
+use App\Models\Degree;
 use App\Models\Format;
+use App\Models\Gender;
 use App\Models\Period;
 use App\Models\Process;
 use App\Models\StatusDoc;
+use App\Models\Student;
 use App\Models\Type_Process;
 use App\Models\TypeDocument;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -68,6 +73,10 @@ Route::post('/CreateNewUser', [UsersManagement::class, 'CreateUserIndividual'])
 ->name('CreateUserIn')
 ->middleware('admin');
 
+Route::post('/CreateNewUsers', [UsersManagement::class, 'CreateUsersMassive'])
+->name('CreateUserMul')
+->middleware('admin');
+
 Route::get('/CreateNewPeriod', [PeriodManagement::class, 'CreatePeriod'])
 ->name('CreatePeriod')
 ->middleware('admin');
@@ -96,8 +105,6 @@ Route::post('/savecomment/{doc}',[DocumentManagement::class, 'DoObservation'])
 ->name('savecomment')
 ->middleware('admin');
 
-
-
 Route::get('/descargar_formato/{id}', [Estancia::class, 'DownloadFormat'])
 ->name('Descargar_formato');
 
@@ -112,6 +119,11 @@ Route::post('/UploadDocument/{PageProcess}/{format}',[Estancia::class, 'UploadDo
 Route::get('/seeDocument/{NameFile}',[Estancia::class, 'SeeDocument'])
 ->name('SeeDocument');
 
+Route::post('/updatedata',[profile::class, 'UpdateDataUser'])
+->name('updatedataprofile');
+
+Route::post('/updatepassword', [profile::class, 'ChangePassword'])
+->name('updatepassword');
 /*
 ------------------------------------------
 |             Redirections               |
@@ -156,3 +168,16 @@ Route::get('/documentos_proceso/{IdProcess}', function($IdProcess){
         return view('users.alumno.documentos',compact('formatos','proceso','DocumentosAlumno'));
     }
 })->name('documentos_alumno')->middleware('alumno');
+
+Route::get('/perfil', function(){
+    $userdata = User::find(auth()->user()->email);
+    $studentdata = Student::find($userdata->email);
+    $Degree = Degree::all();
+    $Genre = Gender::all();
+    return view('users.perfil', compact('userdata','studentdata','Degree','Genre'));
+})
+->name('perfil');
+
+Route::get('/testemail', function(){
+    return view('email.emaildocument');
+})->name('email');

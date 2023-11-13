@@ -24,7 +24,7 @@
                     <a href="#" class="navbar_content_links_pages">Empresas</a>
                 </li>
                 <li>
-                    <a href="#" class="navbar_content_links_pages">Perfil</a>
+                    <a href="{{route('perfil')}}" class="navbar_content_links_pages">Perfil</a>
                 </li>
                 <li>
                     <a class="navbar_content_links_pages" href="{{ route('logout') }}"
