@@ -27,6 +27,9 @@
                     <a href="{{ route('periods') }}" class="navbar_content_links_pages">Periodos</a>
                 </li>
                 <li>
+                    <a href="{{ route('EnterpriseManagement') }}" class="navbar_content_links_pages">Empresas</a>
+                </li>
+                <li>
                     <a href="{{ route('perfil') }}" class="navbar_content_links_pages">Perfil</a>
                 </li>
                 <li>

@@ -13,6 +13,7 @@ class Process extends Model
     public $timestamps = false;
     protected $table = "process";
     protected $primaryKey = "IdProcess";
+    public $keyType = 'string';
 
     public function DataDocuments(){
         return $this->hasMany(Detail_Document::class,'IdDoc');

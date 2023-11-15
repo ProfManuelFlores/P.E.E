@@ -35,7 +35,7 @@
                     </tr>
                 </thead>
                 <tbody class="">
-                    @foreach ($formatos as $formato)
+                    @foreach ($formatos as $index => $formato)
                         @if ($formato->Name != 'Guia de uso')
                             <tr>
                                 <td class="Documentos_alumno_contents_rows">{{ $formato->Desc_Document }}</td>
@@ -45,16 +45,9 @@
                                     </a>
                                 </td>
                                 <td class="Documentos_alumno_contents_rows">
-                                    @foreach ($DocumentosAlumno as $doc)
-                                        @if ($doc->IdTypeDoc == $formato->IdTypeDoc)
-                                            @foreach ($statusDoc as $status)
-                                                @if ($doc->IdStatusDoc == $status->IdStatus)
-                                                    <button class="button-{{ $doc->IdStatusDoc }}"
-                                                        disabled>{{ $status->Desc_Status }}</button>
-                                                @endif
-                                            @endforeach
-                                        @endif
-                                    @endforeach
+                                    @include('plantillas.commun.modal-statusdoc')
+                                    <button class="button" data-modal-target="authentication-modalstatus{{ $index }}"
+                                        data-modal-toggle="authentication-modalstatus{{ $index }}">Ver Estados</button>
                                 </td>
                                 <td class="flex Documentos_alumno_contents_rows">
                                     @if (count($DocumentosAlumno->where('IdTypeDoc', $formato->IdFormat)) == 0)
@@ -62,15 +55,17 @@
                                             action="{{ route('UploadDocument', [$proceso->IdProcess, $formato->IdFormat]) }}"
                                             method="post" enctype="multipart/form-data">
                                             @csrf
-                                            @if (($formato->IdTypeDoc == 0 || $formato->IdTypeDoc == 1) && $processperiod->Phase1 == 1)
-                                                <input type="file" name="doc" id="doc">
-                                                <button class="button">Enviar</button>
-                                            @elseif (($formato->IdTypeDoc == 2 || $formato->IdTypeDoc == 3) && $processperiod->Phase2 == 1)
-                                                <input type="file" name="doc" id="doc">
-                                                <button class="button">Enviar</button>
-                                            @elseif (($formato->IdTypeDoc == 4 || $formato->IdTypeDoc == 5) && $processperiod->Phase3 == 1)
-                                                <input type="file" name="doc" id="doc">
-                                                <button class="button">Enviar</button>
+                                            @if ($processperiod != null)
+                                                @if (($formato->IdTypeDoc == 0 || $formato->IdTypeDoc == 1) && $processperiod->Phase1 == 1)
+                                                    <input type="file" name="doc" id="doc">
+                                                    <button class="button">Enviar</button>
+                                                @elseif (($formato->IdTypeDoc == 2 || $formato->IdTypeDoc == 3) && $processperiod->Phase2 == 1)
+                                                    <input type="file" name="doc" id="doc">
+                                                    <button class="button">Enviar</button>
+                                                @elseif (($formato->IdTypeDoc == 4 || $formato->IdTypeDoc == 5) && $processperiod->Phase3 == 1)
+                                                    <input type="file" name="doc" id="doc">
+                                                    <button class="button">Enviar</button>
+                                                @endif
                                             @endif
                                         </form>
                                     @else

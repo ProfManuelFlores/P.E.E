@@ -9,4 +9,5 @@ class Size_Enterprise extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    public $table = 'size_enterprise';
 }

@@ -15,15 +15,39 @@
 
     </header>
     <section>
-        <div class="grid grid-cols-1">
-            <div class="">
-
+        <div class="grid grid-cols-1 text-center">
+            <div class="py-10">
+                <p class="title text-center">Usuarios en plataforma</p>
+                <p class="subtitle">Usuarios totales</p>
+                <p class="subtitle text-primary-color">{{$stadisticusers}}</p>
             </div>
-            <div class="grid grid-cols-1:grid-cols-3">
-
-            </div>
-            <div class="grid grid-cols-1:grid-cols-3">
-
+            <div class="py-10">
+                <p class="title text-center">Usuarios con procesos (totales)</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 py-10">
+                    @foreach ($stadisticusersprocess as $index => $processstadistic)
+                        @foreach ($typeprocess as $p)
+                            @if ($p->IdProcess == $index)
+                                <div class="py-8">
+                                    <p class="subtitle">{{$p->Desc_Process}}</p>
+                                    <p class="subtitle text-primary-color">{{$processstadistic}}</p>
+                                </div>
+                            @endif
+                        @endforeach
+                    @endforeach
+                </div>
+                <p class="title text-center">Usuarios en plataforma (periodo actual)</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 py-10">
+                    @foreach ($stadisticusersprocessnow as $index => $processstadisticnow)
+                        @foreach ($typeprocess as $p)
+                            @if ($p->IdProcess == $index)
+                                <div class="py-8">
+                                    <p class="subtitle">{{$p->Desc_Process}}</p>
+                                    <p class="subtitle text-primary-color">{{$processstadisticnow}}</p>
+                                </div>
+                            @endif
+                        @endforeach
+                    @endforeach
+                </div>
             </div>
         </div>
     </section>

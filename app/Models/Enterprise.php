@@ -10,12 +10,8 @@ class Enterprise extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    public function DataSize(): BelongsTo
-    {
-        return $this->belongsTo(Size_Enterprise::class, 'IdSize');
-    }
-    public function DataSociety(): BelongsTo
-    {
-        return $this->belongsTo(Society::class, 'IdSociety');
-    }
+    public $table = 'enterprise';
+    public $primaryKey = 'Rcf';
+    public $keyType = 'string';
+    
 }

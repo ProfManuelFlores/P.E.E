@@ -1,16 +1,20 @@
 <?php
 
 use App\Http\Controllers\DocumentManagement;
+use App\Http\Controllers\enterpriseManagement;
 use App\Http\Controllers\Estancia;
 use App\Http\Controllers\FormatsManagement;
 use App\Http\Controllers\PeriodManagement;
 use App\Http\Controllers\UsersManagement;
 use App\Http\Controllers\profile;
 use App\Models\Degree;
+use App\Models\Enterprise;
 use App\Models\Format;
 use App\Models\Gender;
 use App\Models\Period;
 use App\Models\Process;
+use App\Models\Size_Enterprise;
+use App\Models\Society;
 use App\Models\StatusDoc;
 use App\Models\Student;
 use App\Models\Type_Process;
@@ -19,6 +23,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 use RealRashid\SweetAlert\Facades\Alert;
 
 /*
@@ -43,7 +48,26 @@ Route::get('/', function () {
 */
 
     Route::get('/inicio_admin',function(){
-        return view('users.admin.inicio-admin');
+        $date = Carbon::now();
+        $year = $date->year;
+        $month = $date->month;
+        if ($month >= 1 && $month <= 4) {
+            $quarter = '01';
+        } elseif ($month >= 5 && $month <= 8) {
+            $quarter = '02';
+        } else {
+            $quarter = '03';
+        }
+        $idp = $year . $quarter;
+        $stadisticusers = User::count();
+        $stadisticusersprocess = [];
+        $stadisticusersprocessnow = [];
+        $typeprocess = Type_Process::all();
+        for ($i = 1; $i <= 5; $i++) {
+            $stadisticusersprocess[$i] = Process::where('IdTypeProcess', $i)->count();
+            $stadisticusersprocessnow[$i] = Process::where('IdTypeProcess', $i)->where('IdPeriod',$idp)->count();
+        }
+        return view('users.admin.inicio-admin', compact('stadisticusers', 'stadisticusersprocess', 'typeprocess','stadisticusersprocessnow'));
     })->name('admin')->middleware('admin');
 
     Route::get('/inicio_alumno', function(){
@@ -105,6 +129,10 @@ Route::post('/savecomment/{doc}',[DocumentManagement::class, 'DoObservation'])
 ->name('savecomment')
 ->middleware('admin');
 
+Route::post('/modifiedenterprise/{rcf}',[enterpriseManagement::class, 'UpdateEnterprise'])
+->name('UpdateEnterprise')
+->middleware('admin');
+
 Route::get('/descargar_formato/{id}', [Estancia::class, 'DownloadFormat'])
 ->name('Descargar_formato');
 
@@ -150,6 +178,25 @@ Route::get('/ProcessStudents', function(){
     return view('users.admin.studentsprocess', compact('processinfos','typeprocess'));
 })->name('processinfo')->middleware('admin');
 
+Route::get('/ProcessStudentsAcademic', function(){
+    $processinfos = Process::all();
+    $typeprocess = Type_Process::all();
+    return view('users.admin.studentsprocess', compact('processinfos','typeprocess'));
+})->name('processinfoAcademic')->middleware('asesoracademico');
+
+Route::get('/ProcessStudentsEnterprise', function(){
+    $processinfos = Process::all();
+    $typeprocess = Type_Process::all();
+    return view('users.admin.studentsprocess', compact('processinfos','typeprocess'));
+})->name('processinfoEnterprise')->middleware('empresa');
+
+Route::get('/EnterpriseManagement', function(){
+    $enterprises = Enterprise::all();
+    $sizes = Size_Enterprise::all();
+    $society = Society::all();
+    return view('users.admin.enterpriseManagement',compact('enterprises', 'sizes', 'society'));
+})->name('EnterpriseManagement');
+
 Route::get('/documentos_proceso/{IdProcess}', function($IdProcess){
     $formatos=TypeDocument::all();
     $proceso=Type_Process::find($IdProcess);
@@ -165,7 +212,8 @@ Route::get('/documentos_proceso/{IdProcess}', function($IdProcess){
         $processperiod = Period::find($ProcesoAlumno->IdPeriod)->first();
         return view('users.alumno.documentos',compact('formatos','proceso','ProcesoAlumno','DocumentosAlumno','statusDoc','processperiod'));
     } else{
-        return view('users.alumno.documentos',compact('formatos','proceso','DocumentosAlumno'));
+        $processperiod = Null;
+        return view('users.alumno.documentos',compact('formatos','proceso','DocumentosAlumno','processperiod'));
     }
 })->name('documentos_alumno')->middleware('alumno');
 

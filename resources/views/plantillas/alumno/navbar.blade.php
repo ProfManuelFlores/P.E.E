@@ -18,10 +18,7 @@
                     <a href="{{route('alumno')}}" class="navbar_content_links_pages">Inicio</a>
                 </li>
                 <li>
-                    <a href="#" class="navbar_content_links_pages">aaaaaaa</a>
-                </li>
-                <li>
-                    <a href="#" class="navbar_content_links_pages">Empresas</a>
+                    <a href="{{route('EnterpriseManagement')}}" class="navbar_content_links_pages">Empresas</a>
                 </li>
                 <li>
                     <a href="{{route('perfil')}}" class="navbar_content_links_pages">Perfil</a>

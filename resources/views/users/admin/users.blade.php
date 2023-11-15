@@ -28,7 +28,7 @@
                 <thead class="head_table">
                     <tr>
                         <th>Email</th>
-                        <th>Rol</th>
+                        <th class="hidden md:inline-flex">Rol</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -36,7 +36,7 @@
                     @foreach ($allusers as $index => $user)
                         <tr>
                             <td>{{ $user->email }}</td>
-                            <td>{{ $user->role }}</td>
+                            <td class="hidden md:inline-flex">{{ $user->role }}</td>
                             <td>
                                 <div class="action_buttons">
                                     @include('plantillas.commun.modal-form-edituser')
@@ -90,6 +90,7 @@
 <script>
     $(document).ready(function() {
         $('#users').DataTable({
+            responsive: true,
             dom: "Bfrtip",
             buttons: {
                 dom: {
