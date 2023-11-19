@@ -47,7 +47,7 @@ class Estancia extends Controller
         }
     }
 
-    public function SignupPeriod($PageProcess){
+    public function SignupPeriod(Request $request,$PageProcess){
         
         $result = $this->__VerifyProcess($PageProcess);
         if($result == false){

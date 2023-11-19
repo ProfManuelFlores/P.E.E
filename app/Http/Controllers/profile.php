@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Academic_adviser;
+use App\Models\Enterprise;
+use App\Models\Enterprise_adviser;
 use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -40,25 +43,69 @@ class profile extends Controller
         ]);
         $usertoupdate = User::find($request->input('email'));
         $student = Student::find($request->input('email'));
-        if($student == true){
-            $usertoupdate->First_name = $request->input('first_name');
-            $usertoupdate->Last_name = $request->input('last_name');
-            $usertoupdate->IdGender = $request->input('');
-            $student->user = $request->input('email');
-            $student->Tuition = $request->input('Tuition');
-            $student->Disability = $request->input('Disability');
-            $student->Indigenous_Language = $request->input('Indigenous_Language');
-        } else {
-            $student = new Student();
-            $usertoupdate->First_name = $request->input('first_name');
-            $usertoupdate->Last_name = $request->input('last_name');
-            $student->user = $request->input('email');
-            $student->Tuition = $request->input('Tuition');
-            $student->Disability = $request->input('Disability');
-            $student->Indigenous_Language = $request->input('Indigenous_Language');
+        $academic = Academic_adviser::find($request->input('email'));
+        $enterpriser = Enterprise_adviser::find($request->input('email'));
+        if(Auth::user()->role == 2){
+            if($student == true){
+                $usertoupdate->First_name = $request->input('first_name');
+                $usertoupdate->Last_name = $request->input('last_name');
+                $usertoupdate->IdGender = $request->input('');
+                $student->user = $request->input('email');
+                $student->Tuition = $request->input('Tuition');
+                $student->Disability = $request->input('Disability');
+                $student->Indigenous_Language = $request->input('Indigenous_Language');
+                $student->save();
+            } elseif($student == false) {
+                $student = new Student();
+                $usertoupdate->First_name = $request->input('first_name');
+                $usertoupdate->Last_name = $request->input('last_name');
+                $student->user = $request->input('email');
+                $student->Tuition = $request->input('Tuition');
+                $student->Disability = $request->input('Disability');
+                $student->Indigenous_Language = $request->input('Indigenous_Language');
+                $student->save();
+            }
+        }elseif(Auth::user()->role == 3){
+            if($enterpriser == true){
+                $usertoupdate->First_name = $request->input('first_name');
+                $usertoupdate->Last_name = $request->input('last_name');
+                $enterpriser->user = $request->input('email');
+                $enterpriser->IdArea = $request->input('Knowledge');
+                $enterpriser->IdDegree = $request->input('Degree');
+                $enterpriser->IdEnterprise = $request->input('Enterprise');
+                $enterpriser->save();
+    
+            }elseif($enterpriser == false){
+                $enterpriser = new Enterprise_adviser();
+                $usertoupdate->First_name = $request->input('first_name');
+                $usertoupdate->Last_name = $request->input('last_name');
+                $enterpriser->user = $request->input('email');
+                $enterpriser->IdArea = $request->input('Knowledge');
+                $enterpriser->IdDegree = $request->input('Degree');
+                $enterpriser->IdEnterprise = $request->input('Enterprise');
+                $enterpriser->save();
+            }
+
+        }elseif(Auth::user()->role == 4){
+            if($academic == true){
+                $usertoupdate->First_name = $request->input('first_name');
+                $usertoupdate->Last_name = $request->input('last_name');
+                $academic->user = $request->input('email');
+                $academic->IdArea = $request->input('Knowledge');
+                $academic->IdDegree = $request->input('Degree');
+                $academic->save();
+                
+            } elseif($academic == false){
+                $academic = new Academic_adviser();
+                $academic->First_name = $request->input('first_name');
+                $academic->Last_name = $request->input('last_name');
+                $academic->user = $request->input('email');
+                $academic->IdArea = $request->input('Knowledge');
+                $academic->IdDegree = $request->input('Degree');
+                $academic->save();
+            }
         }
         if(Auth::attempt($credentials)){
-            $student->save();
             $usertoupdate->save();
             Alert::Success('Exito','Tu perfil se ha actualizado');
             return redirect('/perfil');

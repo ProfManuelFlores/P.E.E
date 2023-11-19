@@ -11,6 +11,8 @@ class Academic_adviser extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    public $table = 'academic_adviser';
+    public $primaryKey = 'user';
     public function DataUser(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user');

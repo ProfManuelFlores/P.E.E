@@ -8,6 +8,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
+    @include('plantillas.asesorempresarial.navbar')
     <h1>eres una empresa karnal</h1>
 </body>
 </html>

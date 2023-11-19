@@ -9,4 +9,6 @@ class Area_Knowledge extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    public $primaryKey = 'IdArea';
+    public $table = 'area_knowledge';
 }

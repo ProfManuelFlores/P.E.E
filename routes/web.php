@@ -7,8 +7,11 @@ use App\Http\Controllers\FormatsManagement;
 use App\Http\Controllers\PeriodManagement;
 use App\Http\Controllers\UsersManagement;
 use App\Http\Controllers\profile;
+use App\Models\Academic_adviser;
+use App\Models\Area_Knowledge;
 use App\Models\Degree;
 use App\Models\Enterprise;
+use App\Models\Enterprise_adviser;
 use App\Models\Format;
 use App\Models\Gender;
 use App\Models\Period;
@@ -220,9 +223,13 @@ Route::get('/documentos_proceso/{IdProcess}', function($IdProcess){
 Route::get('/perfil', function(){
     $userdata = User::find(auth()->user()->email);
     $studentdata = Student::find($userdata->email);
+    $enterprise = Enterprise_adviser::find($userdata->email);
+    $academic = Academic_adviser::find($userdata->email);
     $Degree = Degree::all();
     $Genre = Gender::all();
-    return view('users.perfil', compact('userdata','studentdata','Degree','Genre'));
+    $enterprises = Enterprise::all();
+    $Knowledge = Area_Knowledge::all();
+    return view('users.perfil', compact('userdata','studentdata','Degree','Genre','Knowledge','enterprises','enterprise','academic'));
 })
 ->name('perfil');
 

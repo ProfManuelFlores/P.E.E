@@ -20,9 +20,11 @@
         @endstudent
 
         @enterprise()
+            @include('plantillas.asesorempresarial.navbar')
         @endenterprise
 
         @academic()
+            @include('plantillas.asesoracademico.navbar')
         @endacademic
     </header>
     <section>
@@ -98,9 +100,131 @@
         @endstudent
 
         @enterprise()
+            <form action="{{ route('updatedataprofile') }}" method="POST">
+                @csrf
+                <div class="form_general">
+                    <div class="grid gap-6 mb-6 md:grid-cols-2">
+                        <div>
+                            <label for="first_name" class="label_line">Nombres</label>
+                            <input type="text" id="first_name" name="first_name" class="inputs_line" placeholder="John"
+                                value="{{ $userdata->First_name }}">
+                        </div>
+                        <div>
+                            <label for="last_name" class="label_line">Apellidos</label>
+                            <input type="text" id="last_name" name="last_name" class="inputs_line" placeholder="Doe"
+                                value="{{ $userdata->Last_name }}">
+                        </div>
+                        <div>
+                            <label for="label_line" class="label_line">¿cual es tu genero?</label>
+                            <select name="genre" id="genre" class="select_line">
+                                @foreach ($Genre as $g)
+                                    <option value="{{ $g->IdGender }}"
+                                        {{ $g->IdGender == $userdata->IdGender ? 'selected' : '' }}>{{ $g->Desc_Gender }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <label for="label_line" class="label_line">¿que grado de estudio tiene?</label>
+                        <select name="Degree" id="Degree" class="select_line">
+                            @foreach ($Degree as $d)
+                                <option value="{{$d->IdDegree}}" {{$d->IdDegree == $userdata->IdDegree ? 'selected' : ''}}>{{$d->Desc_Degree}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-6">
+                        <label for="label_line" class="label_line">¿en que area practica?</label>
+                        <select name="Knowledge" id="Knowledge" class="select_line">
+                            @foreach ($Knowledge as $k)
+                                <option value="{{$k->IdArea}}" {{$userdata->IdArea == $k->IdArea ? 'selected' : ''}}>{{$k->Desc_Area}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-6">
+                        <label for="label_line" class="label_line">¿que empresa trabaja?</label>
+                        <select name="Enterprise" id="Enterprise" class="select_line">
+                            @if ($enterprise != null)
+                                @foreach ($enterprises as $p)
+                                    <option value="{{$p->Rcf}}"{{$p->Rcf == $enterprise->IdEnterprise ? 'selected' : ''}}>{{$p->Name}}</option>
+                                @endforeach
+                            @else 
+                                @foreach ($enterprises as $p)
+                                    <option value="{{$p->Rcf}}">{{$p->Name}}</option>
+                                @endforeach
+                            @endif
+                        </select>
+                    </div>
+                    <div class="mb-6">
+                        <label for="email" class="label_line">Email address</label>
+                        <input type="email" name="email" id="email" class="inputs_line"
+                            value="{{ $userdata->email }}" readonly>
+                    </div>
+                    <div class="mb-6">
+                        <label for="password" class="label_line">Password</label>
+                        <input type="password" id="password" name="password" class="inputs_line" placeholder="•••••••••"
+                            required>
+                    </div>
+                    <button class="button-1">subir</button>
+                </div>
+            </form>
         @endenterprise
 
         @academic()
+        <form action="{{ route('updatedataprofile') }}" method="POST">
+            @csrf
+            <div class="form_general">
+                <div class="grid gap-6 mb-6 md:grid-cols-2">
+                    <div>
+                        <label for="first_name" class="label_line">Nombres</label>
+                        <input type="text" id="first_name" name="first_name" class="inputs_line" placeholder="John"
+                            value="{{ $userdata->First_name }}">
+                    </div>
+                    <div>
+                        <label for="last_name" class="label_line">Apellidos</label>
+                        <input type="text" id="last_name" name="last_name" class="inputs_line" placeholder="Doe"
+                            value="{{ $userdata->Last_name }}">
+                    </div>
+                    <div>
+                        <label for="label_line" class="label_line">¿cual es tu genero?</label>
+                        <select name="genre" id="genre" class="select_line">
+                            @foreach ($Genre as $g)
+                                <option value="{{ $g->IdGender }}"
+                                    {{ $g->IdGender == $userdata->IdGender ? 'selected' : '' }}>{{ $g->Desc_Gender }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <label for="label_line" class="label_line">¿que grado de estudio tiene?</label>
+                    <select name="Degree" id="Degree" class="select_line">
+                        @foreach ($Degree as $d)
+                            <option value="{{$d->IdDegree}}" {{$d->IdDegree == $userdata->IdDegree ? 'selected' : ''}}>{{$d->Desc_Degree}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="mb-6">
+                    <label for="label_line" class="label_line">¿en que area practica?</label>
+                    <select name="Knowledge" id="Knowledge" class="select_line">
+                        @foreach ($Knowledge as $k)
+                            <option value="{{$k->IdArea}}" {{$userdata->IdArea == $k->IdArea ? 'selected' : ''}}>{{$k->Desc_Area}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="mb-6">
+                    <label for="email" class="label_line">Email address</label>
+                    <input type="email" name="email" id="email" class="inputs_line"
+                        value="{{ $userdata->email }}" readonly>
+                </div>
+                <div class="mb-6">
+                    <label for="password" class="label_line">Password</label>
+                    <input type="password" id="password" name="password" class="inputs_line" placeholder="•••••••••"
+                        required>
+                </div>
+                <button class="button-1">subir</button>
+            </div>
+        </form>
         @endacademic
         <p class="subtitle py-8 text-center"> Cambiar contraseña</p>
         <form action="{{route('updatepassword')}}" method="POST">
