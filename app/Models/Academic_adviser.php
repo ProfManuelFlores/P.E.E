@@ -13,6 +13,7 @@ class Academic_adviser extends Model
     public $timestamps = false;
     public $table = 'academic_adviser';
     public $primaryKey = 'user';
+    public $keyType = 'string';
     public function DataUser(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user');

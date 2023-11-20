@@ -55,12 +55,15 @@ class Estancia extends Controller
             $process->IdProcess = Auth::user()->email . $PageProcess;
             $process->IdTypeProcess = $PageProcess;
             $process->users = Auth::user()->email;
+            $process->IdAcademicAdvisor = request('academicadviser');
+            $process->IdEnterpriseAdviser = request('enterpriseadviser');
+            $process->IdEnterprise = request('enterprise');
             $process->IdPeriod = $this->__VerifyPeriod();
             $process->save();
             Alert::Success('Exito!','Se te ha dado de alta en el periodo actual');
             return redirect('/documentos_proceso/'.$PageProcess);
         }else if($result == true){
-            Alert::Error('Fallido','no se ha podido dar de alta en el periodo actual');
+            Alert::Error('Fallido','ya estas dado de alta en el periodo actual');
             return redirect('/documentos_proceso/'.$PageProcess);
         }
     }

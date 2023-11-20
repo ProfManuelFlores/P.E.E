@@ -72,6 +72,7 @@ class profile extends Controller
                 $usertoupdate->Last_name = $request->input('last_name');
                 $usertoupdate->IdGender = $request->input('genre');
                 $enterpriser->user = $request->input('email');
+                $enterpriser->IdEnterpriseAdviser = $request->input('email');
                 $enterpriser->IdArea = $request->input('Knowledge');
                 $enterpriser->IdDegree = $request->input('Degree');
                 $enterpriser->IdEnterprise = $request->input('Enterprise');
@@ -83,6 +84,7 @@ class profile extends Controller
                 $usertoupdate->Last_name = $request->input('last_name');
                 $usertoupdate->IdGender = $request->input('genre');
                 $enterpriser->user = $request->input('email');
+                $enterpriser->IdEnterpriseAdviser = $request->input('email');
                 $enterpriser->IdArea = $request->input('Knowledge');
                 $enterpriser->IdDegree = $request->input('Degree');
                 $enterpriser->IdEnterprise = $request->input('Enterprise');
@@ -95,6 +97,7 @@ class profile extends Controller
                 $usertoupdate->Last_name = $request->input('last_name');
                 $usertoupdate->IdGender = $request->input('genre');
                 $academic->user = $request->input('email');
+                $academic->IdAcademicAdvisor = $request->input('email');
                 $academic->IdArea = $request->input('Knowledge');
                 $academic->IdDegree = $request->input('Degree');
                 $academic->save();
@@ -105,6 +108,7 @@ class profile extends Controller
                 $usertoupdate->Last_name = $request->input('last_name');
                 $usertoupdate->IdGender = $request->input('genre');
                 $academic->user = $request->input('email');
+                $academic->IdAcademicAdvisor = $request->input('email');
                 $academic->IdArea = $request->input('Knowledge');
                 $academic->IdDegree = $request->input('Degree');
                 $academic->save();

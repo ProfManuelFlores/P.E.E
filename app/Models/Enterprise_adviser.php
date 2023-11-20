@@ -13,6 +13,7 @@ class Enterprise_adviser extends Model
     public $timestamps = false;
     public $primaryKey = 'user';
     public $table = 'enterprise_Adviser';
+    public $keyType = 'string';
     public function DataUser(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user');

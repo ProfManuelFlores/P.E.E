@@ -10,12 +10,12 @@ use App\Models\TypeDocument;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\Middleware;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Mail;
 
 class DocumentManagement extends Controller
 {
-
     public function findAllDocuments($idprocess){
         $documents=DB::table('document')
         ->join('detail_document', 'document.IdDocuments', "=", 'detail_document.IdDoc')

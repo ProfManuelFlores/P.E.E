@@ -139,7 +139,7 @@ Route::post('/modifiedenterprise/{rcf}',[enterpriseManagement::class, 'UpdateEnt
 Route::get('/descargar_formato/{id}', [Estancia::class, 'DownloadFormat'])
 ->name('Descargar_formato');
 
-Route::get('/SingupPeriod/{PageProcess}', [Estancia::class, 'SignupPeriod'])
+Route::post('/SingupPeriod/{PageProcess}', [Estancia::class, 'SignupPeriod'])
 ->name('SingupPeriod')
 ->middleware('alumno');
 
@@ -179,19 +179,23 @@ Route::get('/ProcessStudents', function(){
     $processinfos = Process::all();
     $typeprocess = Type_Process::all();
     return view('users.admin.studentsprocess', compact('processinfos','typeprocess'));
-})->name('processinfo')->middleware('admin');
+})->name('processinfo')
+->middleware('admin');
 
 Route::get('/ProcessStudentsAcademic', function(){
-    $processinfos = Process::all();
+    $processinfos = Process::where('IdAcademicAdvisor',Auth::user()->email);
     $typeprocess = Type_Process::all();
     return view('users.admin.studentsprocess', compact('processinfos','typeprocess'));
-})->name('processinfoAcademic')->middleware('asesoracademico');
+})->name('processinfoAcademic')
+->middleware('asesoracademico');
 
-Route::get('/ProcessStudentsEnterprise', function(){
-    $processinfos = Process::all();
+Route::get('/ProcessStudentsEnteprise', function(){
+    $processinfos = Process::where('IdEnterpriseAdviser',Auth::user()->email);
     $typeprocess = Type_Process::all();
     return view('users.admin.studentsprocess', compact('processinfos','typeprocess'));
-})->name('processinfoEnterprise')->middleware('empresa');
+})->name('processinfoEnterprise')
+->middleware('empresa');
+
 
 Route::get('/EnterpriseManagement', function(){
     $enterprises = Enterprise::all();
@@ -203,6 +207,9 @@ Route::get('/EnterpriseManagement', function(){
 Route::get('/documentos_proceso/{IdProcess}', function($IdProcess){
     $formatos=TypeDocument::all();
     $proceso=Type_Process::find($IdProcess);
+    $enterprise=Enterprise::all();
+    $enterpriseadvisers=Enterprise_adviser::all();
+    $academicadvisers=Academic_adviser::all();
     $ProcesoAlumno=Process::where('IdProcess',Auth::user()->email . $IdProcess)->where('IdTypeProcess',$IdProcess)->first();
     $DocumentosAlumno=DB::table('document')
     ->join('detail_document', 'document.IdDocuments', "=", 'detail_document.IdDoc')
@@ -212,11 +219,11 @@ Route::get('/documentos_proceso/{IdProcess}', function($IdProcess){
     ->get();
     $statusDoc=StatusDoc::all();
     if($ProcesoAlumno==true){
-        $processperiod = Period::find($ProcesoAlumno->IdPeriod)->first();
-        return view('users.alumno.documentos',compact('formatos','proceso','ProcesoAlumno','DocumentosAlumno','statusDoc','processperiod'));
+        $processperiod = Period::find($ProcesoAlumno->IdPeriod);
+        return view('users.alumno.documentos',compact('formatos','proceso','ProcesoAlumno','DocumentosAlumno','statusDoc','processperiod','enterprise','academicadvisers','enterpriseadvisers'));
     } else{
         $processperiod = Null;
-        return view('users.alumno.documentos',compact('formatos','proceso','DocumentosAlumno','processperiod'));
+        return view('users.alumno.documentos',compact('formatos','proceso','DocumentosAlumno','processperiod','enterprise','academicadvisers','enterpriseadvisers'));
     }
 })->name('documentos_alumno')->middleware('alumno');
 
