@@ -49,7 +49,7 @@ class profile extends Controller
             if($student == true){
                 $usertoupdate->First_name = $request->input('first_name');
                 $usertoupdate->Last_name = $request->input('last_name');
-                $usertoupdate->IdGender = $request->input('');
+                $usertoupdate->IdGender = $request->input('genre');
                 $student->user = $request->input('email');
                 $student->Tuition = $request->input('Tuition');
                 $student->Disability = $request->input('Disability');
@@ -59,6 +59,7 @@ class profile extends Controller
                 $student = new Student();
                 $usertoupdate->First_name = $request->input('first_name');
                 $usertoupdate->Last_name = $request->input('last_name');
+                $usertoupdate->IdGender = $request->input('genre');
                 $student->user = $request->input('email');
                 $student->Tuition = $request->input('Tuition');
                 $student->Disability = $request->input('Disability');
@@ -69,6 +70,7 @@ class profile extends Controller
             if($enterpriser == true){
                 $usertoupdate->First_name = $request->input('first_name');
                 $usertoupdate->Last_name = $request->input('last_name');
+                $usertoupdate->IdGender = $request->input('genre');
                 $enterpriser->user = $request->input('email');
                 $enterpriser->IdArea = $request->input('Knowledge');
                 $enterpriser->IdDegree = $request->input('Degree');
@@ -79,6 +81,7 @@ class profile extends Controller
                 $enterpriser = new Enterprise_adviser();
                 $usertoupdate->First_name = $request->input('first_name');
                 $usertoupdate->Last_name = $request->input('last_name');
+                $usertoupdate->IdGender = $request->input('genre');
                 $enterpriser->user = $request->input('email');
                 $enterpriser->IdArea = $request->input('Knowledge');
                 $enterpriser->IdDegree = $request->input('Degree');
@@ -90,6 +93,7 @@ class profile extends Controller
             if($academic == true){
                 $usertoupdate->First_name = $request->input('first_name');
                 $usertoupdate->Last_name = $request->input('last_name');
+                $usertoupdate->IdGender = $request->input('genre');
                 $academic->user = $request->input('email');
                 $academic->IdArea = $request->input('Knowledge');
                 $academic->IdDegree = $request->input('Degree');
@@ -97,8 +101,9 @@ class profile extends Controller
                 
             } elseif($academic == false){
                 $academic = new Academic_adviser();
-                $academic->First_name = $request->input('first_name');
-                $academic->Last_name = $request->input('last_name');
+                $usertoupdate->First_name = $request->input('first_name');
+                $usertoupdate->Last_name = $request->input('last_name');
+                $usertoupdate->IdGender = $request->input('genre');
                 $academic->user = $request->input('email');
                 $academic->IdArea = $request->input('Knowledge');
                 $academic->IdDegree = $request->input('Degree');
