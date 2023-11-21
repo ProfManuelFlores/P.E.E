@@ -15,7 +15,20 @@
 </head>
 
 <body>
-    @include('plantillas.admin.navbar')
+    @admin()
+        @include('plantillas.admin.navbar')
+    @endadmin
+    @student()
+        @include('plantillas.alumno.navbar')
+    @endstudent
+
+    @enterprise()
+        @include('plantillas.asesorempresarial.navbar')
+    @endenterprise
+
+    @academic()
+        @include('plantillas.asesoracademico.navbar')
+    @endacademic
     <header>
         @php
             $buttonConfig = [
@@ -71,23 +84,137 @@
                             <td>
                                 @foreach ($documents as $index => $doc)
                                     @if ($doc->IdTypeDoc == $type->IdTypeDoc && array_key_exists($doc->IdStatusDoc, $buttonConfig))
-                                        @if ($doc->IdStatusDoc == 2)
-                                            <button data-modal-target="authentication-modal{{ $index }}"
-                                                data-modal-toggle="authentication-modal{{ $index }}"
-                                                class="{{ $buttonConfig[$doc->IdStatusDoc]['class'] }}">
-                                                {{ $buttonConfig[$doc->IdStatusDoc]['text'] }}
-                                            </button>
-                                            @include('plantillas.commun.modal-form-comments')
-                                        @else
-                                            <a
-                                                href="{{ route('changestatus', [$doc->IdDocuments, $buttonConfig[$doc->IdStatusDoc]['value']]) }}">
-                                                <button class="{{ $buttonConfig[$doc->IdStatusDoc]['class'] }}">
-                                                    {{ $buttonConfig[$doc->IdStatusDoc]['text'] }}
-                                                </button>
-                                            </a>
-                                        @endif
+                                        @admin()
+                                            @if ($doc->IdTypeDoc == $type->IdTypeDoc)
+                                                @if (array_key_exists($doc->IdStatusDoc, $buttonConfig))
+                                                    @if ($buttonConfig[$doc->IdStatusDoc]['value'] != 2)
+                                                        <a
+                                                            href="{{ route('changestatus', [$doc->IdDocuments, $buttonConfig[$doc->IdStatusDoc]['value']]) }}">
+                                                            <button
+                                                                class="{{ $buttonConfig[$doc->IdStatusDoc]['class'] }}">{{ $buttonConfig[$doc->IdStatusDoc]['text'] }}</button>
+                                                        </a>
+                                                    @else
+                                                        <button data-modal-target="authentication-modals{{ $index }}"
+                                                            data-modal-toggle="authentication-modals{{ $index }}"
+                                                            class="button-2">
+                                                            ver observacion
+                                                        </button>
+                                                        @include('plantillas.commun.modal-form-comments')
+                                                    @endif
+                                                    @if ($doc->IdStatusDoc != 2)
+                                                        <button
+                                                            data-modal-target="authentication-modals{{ $index }}"
+                                                            data-modal-toggle="authentication-modals{{ $index }}"
+                                                            class="button-2">
+                                                            Observacion
+                                                        </button>
+                                                        @include('plantillas.commun.modal-form-comments')
+                                                    @endif
+                                                @endif
+                                            @endif
+                                        @endadmin
+                                        @academic()
+                                            @if ($doc->IdTypeDoc == $type->IdTypeDoc)
+                                                @if (array_key_exists($doc->IdStatusDocAcademic, $buttonConfig))
+                                                    @if ($buttonConfig[$doc->IdStatusDoc]['value'] != 2)
+                                                        <a
+                                                            href="{{ route('changestatus', [$doc->IdDocuments, $buttonConfig[$doc->IdStatusDocAcademic]['value']]) }}">
+                                                            <button
+                                                                class="{{ $buttonConfig[$doc->IdStatusDocAcademic]['class'] }}">{{ $buttonConfig[$doc->IdStatusDocAcademic]['text'] }}</button>
+                                                        </a>
+                                                    @else
+                                                        <button
+                                                            data-modal-target="authentication-modals{{ $index }}"
+                                                            data-modal-toggle="authentication-modals{{ $index }}"
+                                                            class="button-2">
+                                                            ver observacion
+                                                        </button>
+                                                        @include('plantillas.commun.modal-form-comments')
+                                                    @endif
+                                                    @if ($doc->IdStatusDocAcademic != 2)
+                                                        <button
+                                                            data-modal-target="authentication-modals{{ $index }}"
+                                                            data-modal-toggle="authentication-modals{{ $index }}"
+                                                            class="button-2">
+                                                            Observacion
+                                                        </button>
+                                                        @include('plantillas.commun.modal-form-comments')
+                                                    @endif
+                                                @endif
+                                            @endif
+                                        @endacademic
+                                        @enterprise()
+                                            @if ($doc->IdTypeDoc == $type->IdTypeDoc)
+                                                @if (array_key_exists($doc->IdStatusDocEnterprise, $buttonConfig))
+                                                    @if ($buttonConfig[$doc->IdStatusDoc]['value'] != 2)
+                                                        <a
+                                                            href="{{ route('changestatus', [$doc->IdDocuments, $buttonConfig[$doc->IdStatusDocEnterprise]['value']]) }}">
+                                                            <button
+                                                                class="{{ $buttonConfig[$doc->IdStatusDocEnterprise]['class'] }}">{{ $buttonConfig[$doc->IdStatusDocEnterprise]['text'] }}</button>
+                                                        </a>
+                                                    @else
+                                                        <button
+                                                            data-modal-target="authentication-modals{{ $index }}"
+                                                            data-modal-toggle="authentication-modals{{ $index }}"
+                                                            class="button-2">
+                                                            ver observacion
+                                                        </button>
+                                                        @include('plantillas.commun.modal-form-comments')
+                                                    @endif
+                                                    @if ($doc->IdStatusDocAcademic != 2)
+                                                        <button
+                                                            data-modal-target="authentication-modals{{ $index }}"
+                                                            data-modal-toggle="authentication-modals{{ $index }}"
+                                                            class="button-2">
+                                                            Observacion
+                                                        </button>
+                                                        @include('plantillas.commun.modal-form-comments')
+                                                    @endif
+                                                @endif
+                                            @endif
+                                        @endenterprise
                                     @endif
                                 @endforeach
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <p class="title p-2 text-center">Documentos Cancelados</p>
+        </div>
+        <div class="table_container">
+            <table id="documentsCanceled" class="cell-border hover general_table">
+                <thead class="head_table">
+                    <tr>
+                        <th class="hidden">IdDoc</th>
+                        <th>Nombre de documento</th>
+                        <th>archivo</th>
+                        <th>acciones</th>
+                    </tr>
+                </thead>
+                <tbody class="body_table">s
+                    @foreach ($documentsCanceled as $index => $doc)
+                        <tr>
+                            <td class="hidden">{{ $doc->IdDoc }}</td>
+                            @foreach ($typedocuments as $t)
+                                @if ($doc->IdTypeDoc == $t->IdTypeDoc)
+                                    <td>{{ $t->Desc_Document }}</td>
+                                @endif
+                            @endforeach
+                            <td>
+                                <a href="{{ route('SeeDocument', $doc->NameFile) }}" class="button">ver
+                                    documento</a>
+                                <input type="text" value="{{ $doc->NameFile }}"
+                                    class="border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-color focus:border-primary-color dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-color dark:focus:border-primary-color">
+                            </td>
+                            <td>
+                                <button data-modal-target="authentication-modals{{ $index }}"
+                                    data-modal-toggle="authentication-modals{{ $index }}" class="button-2">
+                                    ver observacion
+                                </button>
+                                @include('plantillas.commun.modal-form-comments')
                             </td>
                         </tr>
                     @endforeach
@@ -99,6 +226,20 @@
 <script>
     $(document).ready(function() {
         $('#documents').DataTable({
+            dom: "Bfrtip",
+            buttons: {
+                dom: {
+                    button: {
+                        className: 'btn'
+                    }
+                },
+            }
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $('#documentsCanceled').DataTable({
             dom: "Bfrtip",
             buttons: {
                 dom: {

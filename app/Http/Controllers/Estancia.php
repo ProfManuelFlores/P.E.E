@@ -79,6 +79,8 @@ class Estancia extends Controller
                     $detail_document = new Detail_Document();
                     $document->IdTypeDoc = $formatdesired;
                     $document->IdStatusDoc = 0;
+                    $document->IdStatusDocAcademic = 0;
+                    $document->IdStatusDocEnterprise = 0;
                     $document->NameFile =$_FILES['doc']['name'];
                     $document->save();
                     $detail_document->IdDoc = $document->getKey();
@@ -103,8 +105,18 @@ class Estancia extends Controller
     public function UpdateDocument(){
 
     }
-    public function CancelDocument(){
-
+    public function CancelDocument($PageProcess,$iddoc){
+        $documenttocancel = Document::find($iddoc);
+        $documenttocancel->delete();
+        $documenttocancel->IdStatusDoc = 0;
+        $documenttocancel->IdStatusDocAcademic = 0;
+        $documenttocancel->IdStatusDocEnterprise = 0;
+        $documenttocancel->comment = null;
+        $documenttocancel->comment_Academic = null;
+        $documenttocancel->comment_Enterprise = null;
+        $documenttocancel->save();
+        Alert::Success('Exito','su documento se ha cancelado');
+        return redirect('/documentos_proceso/'.$PageProcess);
     }
     public function SeeObservation(){
 

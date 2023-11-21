@@ -121,16 +121,14 @@ Route::post('/UpdateFormat/{id}', [FormatsManagement::class, 'UpdateFormat'])
 ->middleware('admin');
 
 Route::get('/documentsStudent/{IdProcess}',[DocumentManagement::class, 'findAllDocuments'])
-->name('SearchDocumentStudent')
-->middleware('admin');
+->name('SearchDocumentStudent');
 
 Route::get('/changestatus/{doc}/{status}',[DocumentManagement::class, 'ChangeStatus'])
 ->name('changestatus')
 ->middleware('admin');
 
 Route::post('/savecomment/{doc}',[DocumentManagement::class, 'DoObservation'])
-->name('savecomment')
-->middleware('admin');
+->name('savecomment');
 
 Route::post('/modifiedenterprise/{rcf}',[enterpriseManagement::class, 'UpdateEnterprise'])
 ->name('UpdateEnterprise')
@@ -145,6 +143,10 @@ Route::post('/SingupPeriod/{PageProcess}', [Estancia::class, 'SignupPeriod'])
 
 Route::post('/UploadDocument/{PageProcess}/{format}',[Estancia::class, 'UploadDocument'])
 ->name('UploadDocument')
+->middleware('alumno');
+
+Route::get('/cancelDocument/{pageprocess}/{IdDoc}',[Estancia::class, 'CancelDocument'])
+->name('cancelDocument')
 ->middleware('alumno');
 
 Route::get('/seeDocument/{NameFile}',[Estancia::class, 'SeeDocument'])
@@ -183,14 +185,14 @@ Route::get('/ProcessStudents', function(){
 ->middleware('admin');
 
 Route::get('/ProcessStudentsAcademic', function(){
-    $processinfos = Process::where('IdAcademicAdvisor',Auth::user()->email);
+    $processinfos = Process::where('IdAcademicAdvisor', Auth::user()->email)->get();
     $typeprocess = Type_Process::all();
     return view('users.admin.studentsprocess', compact('processinfos','typeprocess'));
 })->name('processinfoAcademic')
 ->middleware('asesoracademico');
 
 Route::get('/ProcessStudentsEnteprise', function(){
-    $processinfos = Process::where('IdEnterpriseAdviser',Auth::user()->email);
+    $processinfos = Process::where('IdEnterpriseAdviser', Auth::user()->email)->get();
     $typeprocess = Type_Process::all();
     return view('users.admin.studentsprocess', compact('processinfos','typeprocess'));
 })->name('processinfoEnterprise')
@@ -216,6 +218,7 @@ Route::get('/documentos_proceso/{IdProcess}', function($IdProcess){
     ->join('process', 'process.IdProcess', "=", "detail_document.IdPro")
     ->where('IdTypeProcess', $IdProcess)
     ->where('IdPro', Auth::user()->email . $IdProcess)
+    ->where('deleted_at', null)
     ->get();
     $statusDoc=StatusDoc::all();
     if($ProcesoAlumno==true){

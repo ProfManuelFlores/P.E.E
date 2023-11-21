@@ -15,7 +15,20 @@
 </head>
 
 <body>
+    @admin()
     @include('plantillas.admin.navbar')
+    @endadmin
+    @student()
+        @include('plantillas.alumno.navbar')
+    @endstudent
+
+    @enterprise()
+        @include('plantillas.asesorempresarial.navbar')
+    @endenterprise
+
+    @academic()
+        @include('plantillas.asesoracademico.navbar')
+    @endacademic
     <header>
 
     </header>

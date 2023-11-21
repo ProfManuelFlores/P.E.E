@@ -15,13 +15,7 @@
         <div class="hidden w-full md:block md:w-auto" id="navbar-default">
             <ul class="navbar_content_links_contents">
                 <li>
-                    <a href="{{ route('processinfo') }}" class="navbar_content_links_pages">Registros</a>
-                </li>
-                <li>
-                    <a href="{{ route('formats') }}" class="navbar_content_links_pages">Formatos</a>
-                </li>
-                <li>
-                    <a href="{{ route('periods') }}" class="navbar_content_links_pages">Periodos</a>
+                    <a href="{{ route('processinfoEnterprise') }}" class="navbar_content_links_pages">Registros</a>
                 </li>
                 <li>
                     <a href="{{ route('perfil') }}" class="navbar_content_links_pages">Perfil</a>

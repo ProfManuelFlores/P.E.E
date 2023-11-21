@@ -79,14 +79,12 @@
                                                         documento</a>
                                                     <input type="text" value="{{ $doc->NameFile }}"
                                                         class="border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-color focus:border-primary-color dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-color dark:focus:border-primary-color">
-                                                    @if ($doc->IdStatusDoc != 1)
-                                                        <button class="button">Cancelar</button>
-                                                        @if ($doc->IdStatusDoc == 2)
-                                                            <a data-modal-target="authentication-modal{{ $index }}"
-                                                                data-modal-toggle="authentication-modal{{ $index }}"
-                                                                class="button-2">
-                                                                Observacion
-                                                            </a>
+                                                    @if ($doc->IdStatusDoc != 1 && $doc->IdStatusDocAcademic != 1 && $doc->IdStatusDocEnterprise != 1)
+                                                        <a href="{{route('cancelDocument', [$proceso->IdProcess,$doc->IdDoc])}}" class="button">Cancelar</a>
+                                                        @if ($doc->IdStatusDoc == 2 || $doc->IdStatusDocAcademic == 2 || $doc->IdStatusDocEnterprise == 2)
+                                                            <a data-modal-target="authentication-modals{{ $index }}"
+                                                                data-modal-toggle="authentication-modals{{ $index }}"
+                                                                class="button">Observacion</a>
                                                             @include('plantillas.commun.modal-form-comments')
                                                         @endif
                                                     @endif
