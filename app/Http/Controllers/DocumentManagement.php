@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Mail;
 
 class DocumentManagement extends Controller
 {
-    public function findAllDocuments($idprocess){
+    public function findAllDocuments($idprocess,$user){
+        $user;
         $documents=DB::table('document')
         ->join('detail_document', 'document.IdDocuments', "=", 'detail_document.IdDoc')
         ->join('process', 'process.IdProcess', "=", "detail_document.IdPro")
@@ -31,7 +32,7 @@ class DocumentManagement extends Controller
         ->get();
         $typedocuments = TypeDocument::all();
         $statusdoc = StatusDoc::all();
-        return view('users.admin.documentsStudent', compact('documents','typedocuments','statusdoc','documentsCanceled'));
+        return view('users.admin.documentsStudent', compact('documents','typedocuments','statusdoc','documentsCanceled','user'));
     }
 
     public function ChangeStatus(Request $request,$iddoc,$statedesire){

@@ -57,7 +57,7 @@
                             @endforeach
                             <td>{{ $process->IdPeriod }}</td>
                             <td>
-                                <a href="{{route('SearchDocumentStudent',$process->users . $process->IdTypeProcess)}}">
+                                <a href="{{route('SearchDocumentStudent',[$process->users . $process->IdTypeProcess,$process->users])}}">
                                     <button class="button">Ver Documentos</button>
                                 </a>
                             </td>

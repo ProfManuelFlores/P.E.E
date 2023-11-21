@@ -80,11 +80,49 @@ Route::get('/', function () {
     })->name('alumno')->middleware('alumno');
 
     Route::get('/inicio_empresa',function(){
-        return view('users.empresa.inicio-empresa');
+        $date = Carbon::now();
+        $year = $date->year;
+        $month = $date->month;
+        if ($month >= 1 && $month <= 4) {
+            $quarter = '01';
+        } elseif ($month >= 5 && $month <= 8) {
+            $quarter = '02';
+        } else {
+            $quarter = '03';
+        }
+        $idp = $year . $quarter;
+        $stadisticusers = User::count();
+        $stadisticusersprocess = [];
+        $stadisticusersprocessnow = [];
+        $typeprocess = Type_Process::all();
+        for ($i = 1; $i <= 5; $i++) {
+            $stadisticusersprocess[$i] = Process::where('IdTypeProcess', $i)->where('IdEnterpriseAdviser',Auth::user()->email)->count();
+            $stadisticusersprocessnow[$i] = Process::where('IdTypeProcess', $i)->where('IdPeriod',$idp)->where('IdEnterpriseAdviser',Auth::user()->email)->count();
+        }
+        return view('users.empresa.inicio-empresa', compact('stadisticusers', 'stadisticusersprocess', 'typeprocess','stadisticusersprocessnow'));
     })->name('empresa')->middleware('empresa');
 
     Route::get('/inicio_asesor-academico',function(){
-        return view('users.asesor-academico.asesoracademico');
+        $date = Carbon::now();
+        $year = $date->year;
+        $month = $date->month;
+        if ($month >= 1 && $month <= 4) {
+            $quarter = '01';
+        } elseif ($month >= 5 && $month <= 8) {
+            $quarter = '02';
+        } else {
+            $quarter = '03';
+        }
+        $idp = $year . $quarter;
+        $stadisticusers = User::count();
+        $stadisticusersprocess = [];
+        $stadisticusersprocessnow = [];
+        $typeprocess = Type_Process::all();
+        for ($i = 1; $i <= 5; $i++) {
+            $stadisticusersprocess[$i] = Process::where('IdTypeProcess', $i)->where('IdAcademicAdvisor',Auth::user()->email)->count();
+            $stadisticusersprocessnow[$i] = Process::where('IdTypeProcess', $i)->where('IdPeriod',$idp)->where('IdAcademicAdvisor',Auth::user()->email)->count();
+        }
+        return view('users.asesor-academico.asesoracademico', compact('stadisticusers', 'stadisticusersprocess', 'typeprocess','stadisticusersprocessnow'));
     })->name('asesor-academico')->middleware('asesoracademico');
 
 /*
@@ -120,7 +158,7 @@ Route::post('/UpdateFormat/{id}', [FormatsManagement::class, 'UpdateFormat'])
 ->name('UpdateFormat')
 ->middleware('admin');
 
-Route::get('/documentsStudent/{IdProcess}',[DocumentManagement::class, 'findAllDocuments'])
+Route::get('/documentsStudent/{IdProcess}/{users}',[DocumentManagement::class, 'findAllDocuments'])
 ->name('SearchDocumentStudent');
 
 Route::get('/changestatus/{doc}/{status}',[DocumentManagement::class, 'ChangeStatus'])

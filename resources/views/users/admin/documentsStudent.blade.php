@@ -40,7 +40,7 @@
     </header>
     <section>
         <div class="">
-            <p class="title p-2 text-center">Documentos de ???</p>
+            <p class="title p-2 text-center">Documentos de {{$user}}</p>
         </div>
         <div class="table_container">
             <table id="documents" class="cell-border hover general_table">
