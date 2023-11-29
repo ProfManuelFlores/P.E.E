@@ -284,3 +284,11 @@ Route::get('/perfil', function(){
 Route::get('/testemail', function(){
     return view('email.emaildocument');
 })->name('email');
+
+Route::get('/cd', function(){
+    return view('plantillas.alumno.ceduladeregistro');
+})->name('testcd');
+
+Route::get('/cd2', function(){
+    return view('plantillas.alumno.definiciondeproyecto');
+})->name('testcd2');
