@@ -46,7 +46,7 @@ class enterpriseManagement extends Controller
                 $rowCount = 0;
                 foreach($records as $record){
                     Enterprise::firstOrCreate([
-                        'rcf' => $record['rfc'],
+                        'Rcf' => $record['rfc'],
                         'Name' => $record['nombre']
                     ]);
                     $rowCount++;
@@ -56,12 +56,12 @@ class enterpriseManagement extends Controller
                 }
 
                 Alert::Success('Exito','Las empresas han sido ingresadas correctamente');
-                return redirect('/enterpriseManagement');
+                return redirect('/EnterpriseManagement');
             }
         } catch(Exception $e){
             $error = $e->getMessage();
             Alert::Error('Error', $error);
-            return redirect('/ListUser');
+            return redirect('/EnterpriseManagement');
         }
     }
 }

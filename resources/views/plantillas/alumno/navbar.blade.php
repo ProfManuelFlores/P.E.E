@@ -24,9 +24,6 @@
                     <a href="{{route('perfil')}}" class="navbar_content_links_pages">Perfil</a>
                 </li>
                 <li>
-                    <a href="{{route('testcd')}}" class="navbar_content_links_pages">cedula de registro</a>
-                </li>
-                <li>
                     <a href="{{route('testcd2')}}" class="navbar_content_links_pages">registro de perfil</a>
                 </li>
                 <li>

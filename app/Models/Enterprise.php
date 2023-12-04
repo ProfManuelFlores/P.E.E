@@ -14,4 +14,9 @@ class Enterprise extends Model
     public $primaryKey = 'Rcf';
     public $keyType = 'string';
     
+    protected $fillable = [
+        'Rcf',
+        'Name'
+    ];
+
 }

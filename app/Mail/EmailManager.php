@@ -17,9 +17,9 @@ class EmailManager extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct($DocumentData)
+    public function __construct(public Document $document)
     {
-
+        
     } 
 
     /**
@@ -28,7 +28,7 @@ class EmailManager extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('glover@codefree.com', 'estancias y estadias'),
+            from: new Address('testupqrooemailtestupqroo@gmail.com', 'estancias y estadias'),
             subject: 'Estado de documento',
         );
     }

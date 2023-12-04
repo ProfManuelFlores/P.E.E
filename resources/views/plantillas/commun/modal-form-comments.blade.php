@@ -22,6 +22,7 @@
                         <div class="py-2">
                             <p>Comentario de administrador</p>
                             <textarea name="comment" id="comment" cols="20" rows="5">{{ $doc->comment }}</textarea>
+                            <input class="hidden" type="text" name="user" id="user" value="{{$user}}">
                         </div>
                         @if ($doc->deleted_at == null)
                             <button type="submit"
@@ -36,6 +37,7 @@
                         <div class="py-2">
                             <p>Comentario de asesor academico</p>
                             <textarea name="comment3" id="comment3" cols="20" rows="5">{{ $doc->comment_Academic }}</textarea>
+                            <input class="hidden" type="text" name="user" id="user" value="{{$user}}">
                         </div>
                         @if ($doc->deleted_at == null)
                             <button type="submit"
@@ -50,6 +52,7 @@
                         <div class="py-2">
                             <p>Comentario de asesor empresarial</p>
                             <textarea name="comment2" id="comment2" cols="20" rows="5">{{ $doc->comment_Enterprise }}</textarea>
+                            <input class="hidden" type="text" name="user" id="user" value="{{$user}}">
                         </div>
                         @if ($doc->deleted_at == null)
                             <button type="submit"

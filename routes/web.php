@@ -4,11 +4,13 @@ use App\Http\Controllers\DocumentManagement;
 use App\Http\Controllers\enterpriseManagement;
 use App\Http\Controllers\Estancia;
 use App\Http\Controllers\FormatsManagement;
+use App\Http\Controllers\pdfgenerator;
 use App\Http\Controllers\PeriodManagement;
 use App\Http\Controllers\UsersManagement;
 use App\Http\Controllers\profile;
 use App\Models\Academic_adviser;
 use App\Models\Area_Knowledge;
+use App\Models\carrier;
 use App\Models\Degree;
 use App\Models\Enterprise;
 use App\Models\Enterprise_adviser;
@@ -161,7 +163,7 @@ Route::post('/UpdateFormat/{id}', [FormatsManagement::class, 'UpdateFormat'])
 Route::get('/documentsStudent/{IdProcess}/{users}',[DocumentManagement::class, 'findAllDocuments'])
 ->name('SearchDocumentStudent');
 
-Route::get('/changestatus/{doc}/{status}',[DocumentManagement::class, 'ChangeStatus'])
+Route::get('/changestatus/{doc}/{status}/{user}',[DocumentManagement::class, 'ChangeStatus'])
 ->name('changestatus')
 ->middleware('admin');
 
@@ -170,6 +172,10 @@ Route::post('/savecomment/{doc}',[DocumentManagement::class, 'DoObservation'])
 
 Route::post('/modifiedenterprise/{rcf}',[enterpriseManagement::class, 'UpdateEnterprise'])
 ->name('UpdateEnterprise')
+->middleware('admin');
+
+Route::post('/Newmassiveenterprise',[enterpriseManagement::class, 'UploadEnterpriseMassive'])
+->name('NewEnterprise')
 ->middleware('admin');
 
 Route::get('/descargar_formato/{id}', [Estancia::class, 'DownloadFormat'])
@@ -195,6 +201,16 @@ Route::post('/updatedata',[profile::class, 'UpdateDataUser'])
 
 Route::post('/updatepassword', [profile::class, 'ChangePassword'])
 ->name('updatepassword');
+
+/*
+------------------------------------------
+|             Pdf controller             |
+------------------------------------------
+*/
+
+Route::post('/pdfgenerate', [pdfgenerator::class, 'generatepdfregister'])
+->name('pdfgenerateced');
+
 /*
 ------------------------------------------
 |             Redirections               |
@@ -285,8 +301,21 @@ Route::get('/testemail', function(){
     return view('email.emaildocument');
 })->name('email');
 
-Route::get('/cd', function(){
-    return view('plantillas.alumno.ceduladeregistro');
+Route::get('/cd/{process}', function($processIdType){
+    $datauser = User::find(Auth::user()->email);
+    $datastudent = Student::find($datauser->email);
+    $carriers = carrier::all();
+    $Degree = Degree::all();
+    $Size = Size_Enterprise::all();
+    $process = Process::where('IdTypeProcess',$processIdType)->where('users',$datauser->email)->get()->first();
+    $dataenterpriseco = Enterprise_adviser::find($process->IdEnterpriseAdviser);
+    $dataacademicco = Academic_adviser::find($process->IdAcademicAdvisor);
+    $dataenterprise = Enterprise::find($dataenterpriseco->IdEnterprise);
+    if(empty($process->toarray())){
+        Alert::Error('denegado','no has dado de alta tu proceso');
+        return redirect('/documentos_proceso/'.$processIdType);
+    }
+    return view('plantillas.alumno.ceduladeregistro', compact('datauser','datastudent','carriers','process','dataenterpriseco','dataacademicco','dataenterprise','Degree','Size'));
 })->name('testcd');
 
 Route::get('/cd2', function(){

@@ -48,9 +48,6 @@
                                     @include('plantillas.commun.modal-form-editenterprise')
                                     <button class="button" data-modal-target="authentication-modal{{ $index }}"
                                         data-modal-toggle="authentication-modal{{ $index }}">Ver datos</button>
-                                    @admin()
-                                    <button class="button">Eliminar</button>
-                                    @endadmin
                                 </div>
                             </td>
                         </tr>
@@ -61,10 +58,10 @@
         @admin()
         <div class="options_user">
             <p class="subtitle py-12 text-center">Subir Empresas (Multiples) </p>
-            <form action="" method="POST" class="text-center block" enctype="multipart/form-data">
+            <form action="{{route('NewEnterprise')}}" method="POST" class="text-center block" enctype="multipart/form-data">
                 @csrf
                 <label for="file" class="NewUserForm_Label">Archivo csv</label>
-                <input type="file" name="CSV" id="CSV" class="py-2">
+                <input type="file" name="CSV_E" id="CSV_E" class="py-2">
                 <button class="button-1">Agregar masivamente</button>
             </form>
         </div>

@@ -1,0 +1,22 @@
+.form_general-2{
+    padding:2.5rem;
+}
+
+.form_general-2 input{
+    border-radius:10px;
+    border-radius: 0.5rem; 
+    border-width: 1px; 
+    border-color: #D1D5DB; 
+    width: 100%; 
+    font-size: 0.875rem;
+    line-height: 1.25rem; 
+    color: #111827; 
+    background-color: #F9FAFB; 
+}
+
+.form_general-2 label{
+    font-size: 0.875rem;
+    line-height: 1.25rem; 
+    font-weight: 500; 
+    color: #111827; 
+}

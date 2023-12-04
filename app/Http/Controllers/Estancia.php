@@ -111,9 +111,6 @@ class Estancia extends Controller
         $documenttocancel->IdStatusDoc = 0;
         $documenttocancel->IdStatusDocAcademic = 0;
         $documenttocancel->IdStatusDocEnterprise = 0;
-        $documenttocancel->comment = null;
-        $documenttocancel->comment_Academic = null;
-        $documenttocancel->comment_Enterprise = null;
         $documenttocancel->save();
         Alert::Success('Exito','su documento se ha cancelado');
         return redirect('/documentos_proceso/'.$PageProcess);

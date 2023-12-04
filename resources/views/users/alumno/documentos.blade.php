@@ -99,6 +99,9 @@
                 </tbody>
             </table>
         </div>
+        <div class="text-center">
+            <a href="{{route('testcd',[$proceso->IdProcess])}}" class="navbar_content_links_pages"><button class="button">llenar cedula de registro</button></a>
+        </div>
     </section>
 </body>
 

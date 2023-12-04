@@ -89,7 +89,7 @@
                                                 @if (array_key_exists($doc->IdStatusDoc, $buttonConfig))
                                                     @if ($buttonConfig[$doc->IdStatusDoc]['value'] != 2)
                                                         <a
-                                                            href="{{ route('changestatus', [$doc->IdDocuments, $buttonConfig[$doc->IdStatusDoc]['value']]) }}">
+                                                            href="{{ route('changestatus', [$doc->IdDocuments, $buttonConfig[$doc->IdStatusDoc]['value'], $user]) }}">
                                                             <button
                                                                 class="{{ $buttonConfig[$doc->IdStatusDoc]['class'] }}">{{ $buttonConfig[$doc->IdStatusDoc]['text'] }}</button>
                                                         </a>
@@ -118,9 +118,10 @@
                                                 @if (array_key_exists($doc->IdStatusDocAcademic, $buttonConfig))
                                                     @if ($buttonConfig[$doc->IdStatusDoc]['value'] != 2)
                                                         <a
-                                                            href="{{ route('changestatus', [$doc->IdDocuments, $buttonConfig[$doc->IdStatusDocAcademic]['value']]) }}">
+                                                            href="{{ route('changestatus', [$doc->IdDocuments, $buttonConfig[$doc->IdStatusDocAcademic]['value'], $user]) }}">
                                                             <button
                                                                 class="{{ $buttonConfig[$doc->IdStatusDocAcademic]['class'] }}">{{ $buttonConfig[$doc->IdStatusDocAcademic]['text'] }}</button>
+                                                            
                                                         </a>
                                                     @else
                                                         <button
@@ -148,7 +149,7 @@
                                                 @if (array_key_exists($doc->IdStatusDocEnterprise, $buttonConfig))
                                                     @if ($buttonConfig[$doc->IdStatusDoc]['value'] != 2)
                                                         <a
-                                                            href="{{ route('changestatus', [$doc->IdDocuments, $buttonConfig[$doc->IdStatusDocEnterprise]['value']]) }}">
+                                                            href="{{ route('changestatus', [$doc->IdDocuments, $buttonConfig[$doc->IdStatusDocEnterprise]['value'], $user]) }}">
                                                             <button
                                                                 class="{{ $buttonConfig[$doc->IdStatusDocEnterprise]['class'] }}">{{ $buttonConfig[$doc->IdStatusDocEnterprise]['text'] }}</button>
                                                         </a>

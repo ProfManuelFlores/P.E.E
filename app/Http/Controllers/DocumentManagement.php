@@ -35,7 +35,7 @@ class DocumentManagement extends Controller
         return view('users.admin.documentsStudent', compact('documents','typedocuments','statusdoc','documentsCanceled','user'));
     }
 
-    public function ChangeStatus(Request $request,$iddoc,$statedesire){
+    public function ChangeStatus(Request $request,$iddoc,$statedesire,$user){
         $documenttochangestatus = Document::find($iddoc);
         if($this->middleware('admin')){
             switch ($statedesire) {
@@ -88,11 +88,12 @@ class DocumentManagement extends Controller
             }
         }
         $documenttochangestatus->save();
-        Mail::to($request->user())->send(new EmailManager($documenttochangestatus));
+        Mail::to($user)->send(new EmailManager($documenttochangestatus));
         Alert::success('exito','se ha cambiado el estado del documento');
         return back();
     }
     public function DoObservation(Request $request, $iddoc){
+        set_time_limit(3600);
         try{
             $documenttocomment = Document::find($iddoc);
             if(Auth::user()->role == 1){
@@ -109,11 +110,12 @@ class DocumentManagement extends Controller
             }
             $documenttocomment->save();
             Alert::Success('exito','se ha guardado el comentario');
-            Mail::to($request->user())->send(new EmailManager($documenttocomment));
+            Mail::to($request->input('user'))->send(new EmailManager($documenttocomment));
             return back();
         }catch (Exception $e){
             $error = $e->getMessage();
             Alert::Error('Error',$error);
+            dd($error);
             return back();
         }
     }
