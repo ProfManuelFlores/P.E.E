@@ -25,11 +25,7 @@
                 <!-- Modal body -->
                 <div class="p-6 space-y-6">
                     <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                        para solicitar acceso al sistema de estancias y estadias favor de acercarse al area de
-                        vinculacion
-                        de la universidad politecnica de quintana roo, si no le es posible acercarse fisicamente, favor
-                        de
-                        enviar un correo al departement de vinculacion siendo este: estanciasestadias@upqroo.edu.mx
+                        Solicitar acceso al Sistema de Estancias y Estadías enviando al correo: estanciasestadias@upqroo.edu.mx
                     </p>
                 </div>
                 <!-- Modal footer -->

@@ -14,7 +14,7 @@
                 <span class="sr-only">Close modal</span>
             </button>
             <div class="px-6 py-6 lg:px-8">
-                <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Observacion al documento de:</h3>
+                <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Observación al documento de:</h3>
                 @admin()
                     <form class="space-y-6 text-center" action="{{ route('savecomment', $doc->IdDocuments) }}"
                         method="post">
@@ -35,7 +35,7 @@
                         method="post">
                         @csrf
                         <div class="py-2">
-                            <p>Comentario de asesor academico</p>
+                            <p>Comentario de asesor académico</p>
                             <textarea name="comment3" id="comment3" cols="20" rows="5">{{ $doc->comment_Academic }}</textarea>
                             <input class="hidden" type="text" name="user" id="user" value="{{$user}}">
                         </div>
@@ -69,7 +69,7 @@
                             <textarea name="comment" id="comment" cols="20" rows="5" readonly>{{ $doc->comment }}</textarea>
                         </div>
                         <div class="py-2">
-                            <p>Comentario de asesor academico</p>
+                            <p>Comentario de asesor académico</p>
                             <textarea name="comment" id="comment" cols="20" rows="5" readonly>{{ $doc->comment_Academic }}</textarea>
                         </div>
                         <div class="py-2">

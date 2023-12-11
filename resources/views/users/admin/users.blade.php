@@ -69,7 +69,7 @@
                             <option value=1>Administrador</option>
                             <option value=2>Alumno</option>
                             <option value=3>Asesor Empresarial</option>
-                            <option value=4>Asesor Academico</option>
+                            <option value=4>Asesor Académico</option>
                         </select>
                     </div>
                 </div>

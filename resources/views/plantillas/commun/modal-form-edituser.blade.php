@@ -39,12 +39,11 @@
                             <option value=1 {{ $user->role == 1 ? 'selected' : '' }}>Administrador</option>
                             <option value=2 {{ $user->role == 2 ? 'selected' : '' }}>Alumno</option>
                             <option value=3 {{ $user->role == 3 ? 'selected' : '' }}>Asesor Empresarial</option>
-                            <option value=4 {{ $user->role == 4 ? 'selected' : '' }}>Asesor Academico</option>
+                            <option value=4 {{ $user->role == 4 ? 'selected' : '' }}>Asesor Académico</option>
                         </select>
                     </div>
                     <button
-                        class="button">Login
-                        to your account</button>
+                        class="button">Modificar</button>
                 </form>
             </div>
         </div>

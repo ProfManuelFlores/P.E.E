@@ -23,7 +23,7 @@
             <p class="title text-center py-10"> Documentos de {{ $proceso->Desc_Process }}</p>
             <div class="flex justify-center">
                 <button data-modal-target="default-modal" data-modal-toggle="default-modal" class="button" type="button-2">
-                    Alta en Periodo
+                    Registro en Proceso
                 </button>
             </div>
         </div>
@@ -84,7 +84,7 @@
                                                         @if ($doc->IdStatusDoc == 2 || $doc->IdStatusDocAcademic == 2 || $doc->IdStatusDocEnterprise == 2)
                                                             <a data-modal-target="authentication-modals{{ $index }}"
                                                                 data-modal-toggle="authentication-modals{{ $index }}"
-                                                                class="button">Observacion</a>
+                                                                class="button">Observación</a>
                                                             @include('plantillas.commun.modal-form-comments')
                                                         @endif
                                                     @endif

@@ -26,7 +26,7 @@
                                     disabled>{{ $status->Desc_Status }}</button>
                             @endif
                             @if ($doc->IdStatusDocAcademic == $status->IdStatus)
-                                <p class="py-10">Estado de documento por asesor academico</p>
+                                <p class="py-10">Estado de documento por asesor académico</p>
                             <button class="button-{{ $doc->IdStatusDocAcademic }}"
                                 disabled>{{ $status->Desc_Status }}</button>
                             @endif

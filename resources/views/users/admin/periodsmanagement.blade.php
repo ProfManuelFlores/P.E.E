@@ -56,17 +56,17 @@
         <div class="grid grid-cols-1 justify-items-center md:grid-cols-3 p-3 ">
             <div class="text-center subtitle py-3 ">
                 <p class="py-2">Fase 1</p>
-                <p>Carta de presentacion</p>
-                <p>Carta de aceptacion</p>
-            </div>
+                <p>Carta de presentación</p>
+                <p>Carta de aceptación</p>
+                </div>
             <div class="text-center subtitle py-3 ">
                 <p class="py-2">Fase 2</p>
-                <p>cedula de registro</p>
-                <p>definicion de proyecto</p>
-            </div>
+                <p>cédula de registro</p>
+                <p>definición de proyecto</p>
+                </div>
             <div class="text-center subtitle py-3 ">
                 <p class="py-2">Fase 3</p>
-                <p>carta de liberacion</p>
+                <p>carta de liberación</p>
             </div>
         </div>
     </section>

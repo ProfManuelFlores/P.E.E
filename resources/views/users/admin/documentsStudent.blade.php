@@ -97,7 +97,7 @@
                                                         <button data-modal-target="authentication-modals{{ $index }}"
                                                             data-modal-toggle="authentication-modals{{ $index }}"
                                                             class="button-2">
-                                                            ver observacion
+                                                            ver observación
                                                         </button>
                                                         @include('plantillas.commun.modal-form-comments')
                                                     @endif
@@ -106,7 +106,7 @@
                                                             data-modal-target="authentication-modals{{ $index }}"
                                                             data-modal-toggle="authentication-modals{{ $index }}"
                                                             class="button-2">
-                                                            Observacion
+                                                            observación
                                                         </button>
                                                         @include('plantillas.commun.modal-form-comments')
                                                     @endif
@@ -128,7 +128,7 @@
                                                             data-modal-target="authentication-modals{{ $index }}"
                                                             data-modal-toggle="authentication-modals{{ $index }}"
                                                             class="button-2">
-                                                            ver observacion
+                                                            ver observación
                                                         </button>
                                                         @include('plantillas.commun.modal-form-comments')
                                                     @endif
@@ -137,7 +137,7 @@
                                                             data-modal-target="authentication-modals{{ $index }}"
                                                             data-modal-toggle="authentication-modals{{ $index }}"
                                                             class="button-2">
-                                                            Observacion
+                                                            observación
                                                         </button>
                                                         @include('plantillas.commun.modal-form-comments')
                                                     @endif
@@ -158,7 +158,7 @@
                                                             data-modal-target="authentication-modals{{ $index }}"
                                                             data-modal-toggle="authentication-modals{{ $index }}"
                                                             class="button-2">
-                                                            ver observacion
+                                                            ver observación
                                                         </button>
                                                         @include('plantillas.commun.modal-form-comments')
                                                     @endif
@@ -167,7 +167,7 @@
                                                             data-modal-target="authentication-modals{{ $index }}"
                                                             data-modal-toggle="authentication-modals{{ $index }}"
                                                             class="button-2">
-                                                            Observacion
+                                                            observación
                                                         </button>
                                                         @include('plantillas.commun.modal-form-comments')
                                                     @endif
@@ -213,7 +213,7 @@
                             <td>
                                 <button data-modal-target="authentication-modals{{ $index }}"
                                     data-modal-toggle="authentication-modals{{ $index }}" class="button-2">
-                                    ver observacion
+                                    ver observación
                                 </button>
                                 @include('plantillas.commun.modal-form-comments')
                             </td>

@@ -152,14 +152,7 @@
                             <label for="" class="label_line">Nombres</label>
                         </div>
                         <div class="grid grid-cols-1">
-                            <select name="cargoEMP" id="cargoEMP">
-                                @foreach ($Degree as $d)
-                                    <option value="{{ $d->Desc_Degree }}"
-                                        {{ $d->IdDegree == $dataenterpriseco->IdDegree ? 'selected' : '' }}>
-                                        {{ $d->Desc_Degree }}
-                                    </option>
-                                @endforeach
-                            </select>
+                            <input type="text" name="cargoEMP" id="cargoEMP">
                             <label for="" class="label_line">Cargo</label>
                         </div>
                         <div class="grid grid-cols-1">
@@ -195,14 +188,7 @@
                             <label for="" class="label_line">Nombres</label>
                         </div>
                         <div class="grid grid-cols-1">
-                            <select name="cargoACA" id="cargoACA">
-                                @foreach ($Degree as $d)
-                                    <option value="{{ $d->Desc_Degree }}"
-                                        {{ $d->IdDegree == $dataacademicco->IdDegree ? 'selected' : '' }}>
-                                        {{ $d->Desc_Degree }}
-                                    </option>
-                                @endforeach
-                            </select>
+                            <input type="text" name="cargoACA" id="cargoACA">
                             <label for="" class="label_line">Cargo</label>
                         </div>
                         <div class="grid grid-cols-1">

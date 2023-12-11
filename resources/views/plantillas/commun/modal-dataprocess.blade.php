@@ -7,7 +7,7 @@
             <!-- Modal header -->
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                 <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                    Alta de periodo
+                    Registrarse en el proceso
                 </h3>
                 <button type="button"
                     class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -43,7 +43,7 @@
                         </select>
                     </div>
                     <div class="mb-6">
-                        <label for="academicadviser">Asesor Academico</label>
+                        <label for="academicadviser">Asesor Académico</label>
                         <select name="academicadviser" id="academicadviser"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
                             @foreach ($academicadvisers as $as)
@@ -52,7 +52,7 @@
                         </select>
                     </div>
                     <div class="flex justify-center mb-6">
-                        <button class="button"> Alta en periodo </button>
+                        <button class="button"> Registrarse en el proceso </button>
                     </div>
                 </form>
             </div>

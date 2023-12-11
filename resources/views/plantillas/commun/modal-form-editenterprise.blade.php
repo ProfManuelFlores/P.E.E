@@ -34,7 +34,7 @@
                     </div>
                     <div>
                         <label for=""
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">DIRECCION</label>
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">DIRECCIÓN</label>
                         <input type="text" name="Address" id="Address" value="{{ $enterprise->Address }}"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
                     </div>
@@ -46,14 +46,13 @@
                     </div>
                     <div>
                         <label for=""
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pagina Web</label>
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Página Web</label>
                         <input type="text" name="Webpage" id="WebPage" value="{{ $enterprise->WebPage }}"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
                     </div>
                     <div>
                         <label for=""
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NUMERO DE
-                            TELEFONO</label>
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NÚMERO DE TELÉFONO</label>
                         <input type="text" name="Phone_Number" id="Phone_Number"
                             value="{{ $enterprise->Phone_Number }}"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">

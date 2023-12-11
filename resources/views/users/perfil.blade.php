@@ -48,12 +48,12 @@
                                 value="{{ $userdata->Last_name }}">
                         </div>
                         <div>
-                            <label for="phone" class="label_line">Matricula</label>
+                            <label for="phone" class="label_line">Matrícula</label>
                             <input type="tel" id="Tuition" name="Tuition" value="{{ $studentdata->Tuition ?? '' }}"
                                 class="inputs_line" placeholder="2000000000" pattern="[0-9]{10}">
                         </div>
                         <div>
-                            <label for="label_line" class="label_line">¿cual es tu genero?</label>
+                            <label for="label_line" class="label_line">¿Cuál es tu género?</label>
                             <select name="genre" id="genre" class="select_line">
                                 @foreach ($Genre as $g)
                                     <option value="{{ $g->IdGender }}"
@@ -64,37 +64,37 @@
                         </div>
                     </div>
                     <div class="mb-6">
-                        <label for="label_line" class="label_line">¿tienes alguna discapacidad?</label>
+                        <label for="label_line" class="label_line">¿Tienes alguna discapacidad?</label>
                         <select name="Disability" id="Disability" class="select_line">
                             <option value="0" {{ $studentdata->Disability == 0 ? 'selected' : '' }}>no</option>
                             <option value="1" {{ $studentdata->Disability == 1 ? 'selected' : '' }}>si</option>
                         </select>
                     </div>
                     <div class="mb-6">
-                        <label for="label_line" class="label_line">¿hablas alguna lengua indigena?</label>
+                        <label for="label_line" class="label_line">¿Hablas alguna lengua indígena?</label>
                         <select name="Indigenous_Language" id="Indigenous_Language" class="select_line">
                             <option value="0" {{ $studentdata->Indigenous_Language == 0 ? 'selected' : '' }}>no</option>
                             <option value="1" {{ $studentdata->Indigenous_Language == 1 ? 'selected' : '' }}>si</option>
                         </select>
                     </div>
                     <div class="mb-6">
-                        <label for="label_line" class="label_line">¿que carrera llevas?</label>
+                        <label for="label_line" class="label_line">¿Qué carrera llevas?</label>
                         <select name="Indigenous_Language" id="Indigenous_Language" class="select_line">
                             <option value="0">no</option>
                             <option value="1">si</option>
                         </select>
                     </div>
                     <div class="mb-6">
-                        <label for="email" class="label_line">Email address</label>
+                        <label for="email" class="label_line">Correo Electrónico</label>
                         <input type="email" name="email" id="email" class="inputs_line"
                             value="{{ $userdata->email }}" readonly>
                     </div>
                     <div class="mb-6">
-                        <label for="password" class="label_line">Password</label>
+                        <label for="password" class="label_line">Contraseña</label>
                         <input type="password" id="password" name="password" class="inputs_line" placeholder="•••••••••"
                             required>
                     </div>
-                    <button class="button-1">subir</button>
+                    <button class="button-1">Guardar información</button>
                 </div>
             </form>
         @endstudent
@@ -115,7 +115,7 @@
                                 value="{{ $userdata->Last_name }}">
                         </div>
                         <div>
-                            <label for="label_line" class="label_line">¿cual es tu genero?</label>
+                            <label for="label_line" class="label_line">¿Cuál es tu género?</label>
                             <select name="genre" id="genre" class="select_line">
                                 @foreach ($Genre as $g)
                                     <option value="{{ $g->IdGender }}"
@@ -126,7 +126,7 @@
                         </div>
                     </div>
                     <div class="mb-6">
-                        <label for="label_line" class="label_line">¿que grado de estudio tiene?</label>
+                        <label for="label_line" class="label_line">¿Qué grado de estudio tiene?</label>
                         <select name="Degree" id="Degree" class="select_line">
                             @foreach ($Degree as $d)
                                 <option value="{{$d->IdDegree}}" {{$d->IdDegree == $userdata->IdDegree ? 'selected' : ''}}>{{$d->Desc_Degree}}</option>
@@ -134,7 +134,7 @@
                         </select>
                     </div>
                     <div class="mb-6">
-                        <label for="label_line" class="label_line">¿en que area practica?</label>
+                        <label for="label_line" class="label_line">¿En qué área practica?</label>
                         <select name="Knowledge" id="Knowledge" class="select_line">
                             @foreach ($Knowledge as $k)
                                 <option value="{{$k->IdArea}}" {{$userdata->IdArea == $k->IdArea ? 'selected' : ''}}>{{$k->Desc_Area}}</option>
@@ -156,16 +156,16 @@
                         </select>
                     </div>
                     <div class="mb-6">
-                        <label for="email" class="label_line">Email address</label>
+                        <label for="email" class="label_line">Correo Electrónico</label>
                         <input type="email" name="email" id="email" class="inputs_line"
                             value="{{ $userdata->email }}" readonly>
                     </div>
                     <div class="mb-6">
-                        <label for="password" class="label_line">Password</label>
+                        <label for="password" class="label_line">Contraseña</label>
                         <input type="password" id="password" name="password" class="inputs_line" placeholder="•••••••••"
                             required>
                     </div>
-                    <button class="button-1">subir</button>
+                    <button class="button-1">Guardar información</button>
                 </div>
             </form>
         @endenterprise
@@ -186,7 +186,7 @@
                             value="{{ $userdata->Last_name }}">
                     </div>
                     <div>
-                        <label for="label_line" class="label_line">¿cual es tu genero?</label>
+                        <label for="label_line" class="label_line">¿Cuál es tu género?</label>
                         <select name="genre" id="genre" class="select_line">
                             @foreach ($Genre as $g)
                                 <option value="{{ $g->IdGender }}"
@@ -197,7 +197,7 @@
                     </div>
                 </div>
                 <div class="mb-6">
-                    <label for="label_line" class="label_line">¿que grado de estudio tiene?</label>
+                    <label for="label_line" class="label_line">¿Qué grado de estudio tiene?</label>
                     <select name="Degree" id="Degree" class="select_line">
                         @foreach ($Degree as $d)
                             <option value="{{$d->IdDegree}}" {{$d->IdDegree == $userdata->IdDegree ? 'selected' : ''}}>{{$d->Desc_Degree}}</option>
@@ -213,12 +213,12 @@
                     </select>
                 </div>
                 <div class="mb-6">
-                    <label for="email" class="label_line">Email address</label>
+                    <label for="email" class="label_line">Correo Electrónico</label>
                     <input type="email" name="email" id="email" class="inputs_line"
                         value="{{ $userdata->email }}" readonly>
                 </div>
                 <div class="mb-6">
-                    <label for="password" class="label_line">Password</label>
+                    <label for="password" class="label_line">Contraseña</label>
                     <input type="password" id="password" name="password" class="inputs_line" placeholder="•••••••••"
                         required>
                 </div>
