@@ -15,13 +15,12 @@
                 <span class="sr-only">Close modal</span>
             </button>
             <div class="px-6 py-6 lg:px-8">
-                <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Editando empresa
-                    {{ $enterprise->Name }}</h3>
+                <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Datos de la empresa</h3>
                 <form class="space-y-6" action="{{ route('UpdateEnterprise', $enterprise->Rcf) }}" method="POST">
                     @csrf
                     <div>
                         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                            email</label>
+                            Correo Electrónico</label>
                         <input type="email" name="Email" id="Email" value="{{ $enterprise->Email }}"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                             placeholder="name@company.com">
@@ -34,25 +33,25 @@
                     </div>
                     <div>
                         <label for=""
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">DIRECCIÓN</label>
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Dirección</label>
                         <input type="text" name="Address" id="Address" value="{{ $enterprise->Address }}"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
                     </div>
                     <div>
                         <label for=""
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NOMBRE</label>
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
                         <input type="text" name="Name" id="Name" value="{{ $enterprise->Name }}"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
                     </div>
                     <div>
                         <label for=""
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Página Web</label>
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sitio Web</label>
                         <input type="text" name="Webpage" id="WebPage" value="{{ $enterprise->WebPage }}"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
                     </div>
                     <div>
                         <label for=""
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NÚMERO DE TELÉFONO</label>
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Número de teléfono</label>
                         <input type="text" name="Phone_Number" id="Phone_Number"
                             value="{{ $enterprise->Phone_Number }}"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">

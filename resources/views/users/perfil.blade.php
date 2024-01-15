@@ -38,7 +38,7 @@
                 <div class="form_general">
                     <div class="grid gap-6 mb-6 md:grid-cols-2">
                         <div>
-                            <label for="first_name" class="label_line">Nombres</label>
+                            <label for="first_name" class="label_line">Nombre</label>
                             <input type="text" id="first_name" name="first_name" class="inputs_line" placeholder="John"
                                 value="{{ $userdata->First_name }}">
                         </div>
@@ -53,7 +53,7 @@
                                 class="inputs_line" placeholder="2000000000" pattern="[0-9]{10}">
                         </div>
                         <div>
-                            <label for="label_line" class="label_line">¿Cuál es tu género?</label>
+                            <label for="label_line" class="label_line">Genero</label>
                             <select name="genre" id="genre" class="select_line">
                                 @foreach ($Genre as $g)
                                     <option value="{{ $g->IdGender }}"
@@ -78,10 +78,10 @@
                         </select>
                     </div>
                     <div class="mb-6">
-                        <label for="label_line" class="label_line">¿Qué carrera llevas?</label>
+                        <label for="label_line" class="label_line">Programa Educativo</label>
                         <select name="Indigenous_Language" id="Indigenous_Language" class="select_line">
-                            <option value="0">no</option>
-                            <option value="1">si</option>
+                            <option value="0"></option>
+                            <option value="1"></option>
                         </select>
                     </div>
                     <div class="mb-6">

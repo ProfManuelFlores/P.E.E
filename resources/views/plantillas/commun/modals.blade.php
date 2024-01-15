@@ -8,7 +8,7 @@
                 <!-- Modal header -->
                 <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
                     <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                        Problemas Con Acceso
+                        Problemas de Acceso a la plataforma
                     </h3>
                     <button type="button"
                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -25,7 +25,9 @@
                 <!-- Modal body -->
                 <div class="p-6 space-y-6">
                     <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                        Solicitar acceso al Sistema de Estancias y Estadías enviando al correo: estanciasestadias@upqroo.edu.mx
+                        Enviar un correo electrónico a: estanciasestadias@upqroo.edu.mx
+                        <br>
+                        En caso de ser estudiante de la universidad debes acceder con tu correo institucional
                     </p>
                 </div>
                 <!-- Modal footer -->

@@ -24,13 +24,10 @@
                     <a href="{{route('perfil')}}" class="navbar_content_links_pages">Perfil</a>
                 </li>
                 <li>
-                    <a href="{{route('testcd2')}}" class="navbar_content_links_pages">registro de perfil</a>
-                </li>
-                <li>
                     <a class="navbar_content_links_pages" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
-                        {{ __('Cerrar Sesion') }}
+                        {{ __('Cerrar Sesión') }}
                     </a>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

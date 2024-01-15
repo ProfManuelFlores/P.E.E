@@ -27,14 +27,14 @@
     </header>
     <section>
         <div class="">
-            <p class="title p-10 text-center">Empresas</p>
+            <p class="title p-10 text-center">Directorio de empresas </p>
         </div>
         <div class="table_container">
             <table id="enterprise" class="cell-border hover general_table">
                 <thead class="head_table">
                     <tr>
-                        <th>Rfc</th>
-                        <th>Nombre</th>
+                        <th>RFC</th>
+                        <th>Nombre de la empresa o institución</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>

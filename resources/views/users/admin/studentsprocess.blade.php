@@ -34,15 +34,15 @@
     </header>
     <section>
         <div class="">
-            <p class="title p-2 text-center">Procesos de alumnos</p>
+            <p class="title p-2 text-center">Trayectoria del alumno</p>
         </div>
         <div class="table_container">
             <table id="users" class="cell-border hover general_table">
                 <thead class="head_table">
                     <tr>
-                        <th>Usuario</th>
+                        <th>Matrícula</th>
                         <th>Proceso</th>
-                        <th>Periodo</th>
+                        <th>Período</th>
                         <th>Documentos</th>
                     </tr>
                 </thead>

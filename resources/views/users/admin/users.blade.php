@@ -27,7 +27,7 @@
             <table id="users" class="cell-border hover general_table">
                 <thead class="head_table">
                     <tr>
-                        <th>Email</th>
+                        <th>Correo Electrónico</th>
                         <th class="hidden md:inline-flex">Rol</th>
                         <th>Acciones</th>
                     </tr>

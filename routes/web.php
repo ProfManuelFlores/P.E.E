@@ -77,7 +77,7 @@ Route::get('/', function () {
 
     Route::get('/inicio_alumno', function(){
         $procesos=Type_Process::all();
-        $formatos=Format::where('Name','Guia de uso')->first();
+        $formatos=Format::where('Name','Guía de uso de la plataforma')->first();
         return view('users.alumno.inicio-alumno',compact('procesos','formatos'));
     })->name('alumno')->middleware('alumno');
 

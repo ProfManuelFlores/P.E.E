@@ -14,13 +14,13 @@
                 <span class="sr-only">Close modal</span>
             </button>
             <div class="px-6 py-6 lg:px-8">
-                <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Observación al documento de:</h3>
+                <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Observación</h3>
                 @admin()
                     <form class="space-y-6 text-center" action="{{ route('savecomment', $doc->IdDocuments) }}"
                         method="post">
                         @csrf
                         <div class="py-2">
-                            <p>Comentario de administrador</p>
+                            <p>Comentario</p>
                             <textarea name="comment" id="comment" cols="20" rows="5">{{ $doc->comment }}</textarea>
                             <input class="hidden" type="text" name="user" id="user" value="{{$user}}">
                         </div>

@@ -21,14 +21,14 @@
     </header>
     <section>
         <div class="">
-            <p class="title py-8 text-center">Periodos de documentos</p>
+            <p class="title py-8 text-center"></p>
         </div>
         <div class="table_container">
             <table id="periods" class="cell-border hover general_table">
-                <a href="{{ route('CreatePeriod') }}"><button class="button">Crear Periodo</button> </a>
+                <a href="{{ route('CreatePeriod') }}"><button class="button">Crear Período</button> </a>
                 <thead class="head_table">
                     <tr>
-                        <th>Periodo</th>
+                        <th>Período</th>
                         <th>Fase 1</th>
                         <th>Fase 2</th>
                         <th>Fase 3</th>
@@ -52,7 +52,7 @@
                 </tbody>
             </table>
         </div>
-        <p class="title py-8 text-center"> Guia de documentos por periodo</p>
+        <p class="title py-8 text-center"> Descripción de fases</p>
         <div class="grid grid-cols-1 justify-items-center md:grid-cols-3 p-3 ">
             <div class="text-center subtitle py-3 ">
                 <p class="py-2">Fase 1</p>
@@ -61,12 +61,12 @@
                 </div>
             <div class="text-center subtitle py-3 ">
                 <p class="py-2">Fase 2</p>
-                <p>cédula de registro</p>
-                <p>definición de proyecto</p>
+                <p>Cédula de registro</p>
+                <p>Definición de proyecto</p>
                 </div>
             <div class="text-center subtitle py-3 ">
                 <p class="py-2">Fase 3</p>
-                <p>carta de liberación</p>
+                <p>Carta de liberación</p>
             </div>
         </div>
     </section>

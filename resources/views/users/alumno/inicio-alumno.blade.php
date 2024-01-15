@@ -14,7 +14,7 @@
     </header>
     <section>
         <div class="home_alumno">
-            <p class="title py-4">Bienvenido</p>
+            <p class="title py-4">Bienvenidos</p>
             <div class="home_alumno_contents">
                 @foreach ($procesos as $proceso)
                 <a href="{{route('documentos_alumno',$proceso->IdProcess)}}">
@@ -26,7 +26,7 @@
                 @endforeach
             </div>
             <div class="grid justify-items-center">
-                <p class="title py-4">Guia de usuario</p>
+                <p class="title py-4">Guía de usuarios</p>
                 <embed class="w-full px-2 py-10 aspect-[2/3]" src="{{asset('formats/'.$formatos->NameFile)}}">
             </div>
         </div>

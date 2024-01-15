@@ -12,9 +12,9 @@
 <body>
     <header>
         <div class="text-center py-10">
-            <h1 class="title">Universidad Politecnica de Quintana Roo</h1>
-            <h1 class="title">Direccion de vinculacion, difusion y extension universitaria</h1>
-            <h1 class="title">cedula de registro</h1>
+            <h1 class="title">Universidad Politécnica de Quintana Roo</h1>
+            <h1 class="title">Dirección de vinculación, Difusión y Extensión Universitaria</h1>
+            <h1 class="title">Cédula de registro</h1>
         </div>
     </header>
     <section class="p-2 md:p-10">
@@ -41,12 +41,12 @@
                         </div>
                         <div class="grid grid-cols-1">
                             <input type="number" name="numerotelalumno" id="numerotelalumno" class="inputs_line">
-                            <label for="" class="label_line">Numero de telefono</label>
+                            <label for="" class="label_line">Número de teléfono</label>
                         </div>
                         <div class="grid grid-cols-1">
                             <input type="number" name="matricula" id="matricula" class="inputs_line"
                                 value="{{ $datastudent->Tuition }}">
-                            <label for="" class="label_line">Matricula</label>
+                            <label for="" class="label_line">Matrícula</label>
                         </div>
                         <div class="grid grid-cols-1">
                             <select name="Carreraalumno" id="Carreraalumno">
@@ -56,24 +56,24 @@
                                         {{ $c->Desc_Carrier }}</option>
                                 @endforeach
                             </select>
-                            <label for="" class="label_line">Carrera</label>
+                            <label for="" class="label_line">Programa Educativo</label>
                         </div>
                         <div class="grid grid-cols-1">
                             <input type="email" name="emailalumno" id="emailalumno" class="inputs_line">
-                            <label for="" class="label_line">Email (personal)</label>
+                            <label for="" class="label_line">Correo Electrónico (personal)</label>
                         </div>
                         <div class="grid grid-cols-1">
                             <input type="email" name="emailacademicoalumno" id="emailacademicoalumno"
                                 class="inputs_line" value="{{ $datauser->email }}">
-                            <label for="" class="label_line">Email (Institucional)</label>
+                            <label for="" class="label_line">Correo Electrónico (Institucional)</label>
                         </div>
                         <div class="grid grid-cols-1">
                             <input type="number" name="segurosocial" id="segurosocial" class="inputs_line">
-                            <label for="" class="label_line">No.SS</label>
+                            <label for="" class="label_line">Número de Seguridad Social</label>
                         </div>
                         <div class="grid grid-cols-1 md:col-span-3">
                             <input type="text" name="direccionalumno" id="direccionalumno" class="inputs_line">
-                            <label for="" class="label_line">Direccion</label>
+                            <label for="" class="label_line">Dirección</label>
                         </div>
                     </div>
                 </div>
@@ -88,19 +88,19 @@
                         </div>
                         <div class="grid grid-cols-1">
                             <input type="text" name="tipoempresa" id="tipoempresa">
-                            <label for="">Giro</label>
+                            <label for="">Gíro Comercial</label>
                         </div>
                         <div class="grid grid-cols-1">
                             <select name="tamañoempresa" id="tamañoempresa">
                                 @foreach ($Size as $s)
                                     <option value="{{$s->Desc_size}}" {{ $s->IdSize == $dataenterprise->IdSize ? 'selected' : '' }}>{{$s->Desc_size}}</option>
                                 @endforeach
-                                <label for="">Tamaño</label>
                             </select>
+                            <label for="">Tamaño</label>
                         </div>
                         <div class="grid grid-cols-1 md:col-span-4">
                             <input type="text" name="direccionempresa" id="direccionempresa">
-                            <label for="">Direccion</label>
+                            <label for="">Direccíon</label>
                         </div>
                         <div class="grid grid-cols-1">
                             <p class="subtitle py-4">Responsable de RRHH</p>
@@ -122,15 +122,15 @@
                         </div>
                         <div class="grid grid-cols-1">
                             <input type="number" name="numeroHR" id="numeroHR" class="inputs_line">
-                            <label for="" class="label_line">Telefono</label>
+                            <label for="" class="label_line">Teléfono</label>
                         </div>
                         <div class="grid grid-cols-1">
                             <input type="number" name="EXTHR" id="EXTHR" class="inputs_line">
-                            <label for="" class="label_line">Ext</label>
+                            <label for="" class="label_line">Extension</label>
                         </div>
                         <div class="grid grid-cols-1">
                             <input type="email" name="emailHR" id="emailHR" class="inputs_line">
-                            <label for="" class="label_line">E-mail</label>
+                            <label for="" class="label_line">Correo Electrónico</label>
                         </div>
                     </div>
                 </div>
@@ -149,20 +149,20 @@
                         </div>
                         <div class="grid grid-cols-1">
                             <input type="text" name="nombreEmp" id="nombreEmp" class="inputs_line">
-                            <label for="" class="label_line">Nombres</label>
+                            <label for="" class="label_line">Nombre</label>
                         </div>
                         <div class="grid grid-cols-1">
                             <input type="text" name="cargoEMP" id="cargoEMP">
-                            <label for="" class="label_line">Cargo</label>
+                            <label for="" class="label_line">Puesto</label>
                         </div>
                         <div class="grid grid-cols-1">
                             <input type="email" name="emailEMP" id="emailEMP" class="inputs_line"
                                 value="{{ $process->IdEnterpriseAdviser }}">
-                            <label for="" class="label_line">Email</label>
+                            <label for="" class="label_line">Correo Electrónico</label>
                         </div>
                         <div class="grid grid-cols-1">
                             <input type="number" name="numeroEMP" id="numeroEMP" class="inputs_line">
-                            <label for="" class="label_line">Telefono</label>
+                            <label for="" class="label_line">Teléfono</label>
                         </div>
                         <div class="grid grid-cols-1 md:col-span-2">
                             <input type="text" name="" id="" class="inputs_line" readonly>
@@ -172,7 +172,7 @@
                 </div>
                 <div>
                     <div class="bg-primary-color py-2 md:py-5">
-                        <p class="text-white p-2 subtitle">Datos de Asesor Academico</p>
+                        <p class="text-white p-2 subtitle">Datos de Asesor Académico</p>
                     </div>
                     <div class="text-center py-2 grid grid-cols-1 md:gap-4 md:grid-cols-4 md:py-5">
                         <div class="grid grid-cols-1">
@@ -185,20 +185,20 @@
                         </div>
                         <div class="grid grid-cols-1">
                             <input type="text" name="nombreACA" id="nombreACA" class="inputs_line">
-                            <label for="" class="label_line">Nombres</label>
+                            <label for="" class="label_line">Nombre</label>
                         </div>
                         <div class="grid grid-cols-1">
                             <input type="text" name="cargoACA" id="cargoACA">
-                            <label for="" class="label_line">Cargo</label>
+                            <label for="" class="label_line">Puesto</label>
                         </div>
                         <div class="grid grid-cols-1">
                             <input type="email" name="emailACA" id="emailACA" class="inputs_line"
                                 value="{{ $process->IdAcademicAdvisor }}">
-                            <label for="" class="label_line">Email</label>
+                            <label for="" class="label_line">Correo Electrónico</label>
                         </div>
                         <div class="grid grid-cols-1">
                             <input type="number" name="numeroACA" id="numeroACA" class="inputs_line">
-                            <label for="" class="label_line">Telefono</label>
+                            <label for="" class="label_line">Teléfono</label>
                         </div>
                         <div class="grid grid-cols-1 md:col-span-2">
                             <input type="text" name="" id="" class="inputs_line" readonly>

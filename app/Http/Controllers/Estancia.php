@@ -86,7 +86,7 @@ class Estancia extends Controller
                     $detail_document->IdDoc = $document->getKey();
                     $detail_document->IdPro = Auth::user()->email . $PageProcess;
                     $detail_document->save();
-                    Alert::Success('EXITO!','tu documento se ha subido');
+                    Alert::Success('¡éxito!','El documento se ha adjuntado correctamente');
                     return redirect('/documentos_proceso/'.$PageProcess);
                 }else {
                     Alert::Error('Error','ha ocurrido un error, no se encuentra el archivo, favor de intentar de nuevo en unos momentos');

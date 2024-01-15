@@ -37,7 +37,7 @@ class DocumentManagement extends Controller
 
     public function ChangeStatus(Request $request,$iddoc,$statedesire,$user){
         $documenttochangestatus = Document::find($iddoc);
-        if($this->middleware('admin')){
+        if(Auth::user()->role == 1){
             switch ($statedesire) {
                 case 0:
                     $documenttochangestatus->IdStatusDoc = 0;
@@ -55,7 +55,7 @@ class DocumentManagement extends Controller
                     break;
             }
         }
-        if($this->middleware('asesoracademico')){
+        if(Auth::user()->role == 4){
             switch ($statedesire) {
                 case 0:
                     $documenttochangestatus->IdStatusDocAcademic = 0;
@@ -71,7 +71,7 @@ class DocumentManagement extends Controller
                 default:
             }
         }
-        if($this->middleware('empresa')){
+        if(Auth::user()->role == 3){
             switch ($statedesire) {
                 case 0:
                     $documenttochangestatus->IdStatusDocEnterprise = 0;

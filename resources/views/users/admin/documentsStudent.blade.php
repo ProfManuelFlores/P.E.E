@@ -32,9 +32,9 @@
     <header>
         @php
             $buttonConfig = [
-                0 => ['class' => 'button-1', 'text' => 'aceptar', 'value' => 1],
-                1 => ['class' => 'button-0', 'text' => 'pendiente', 'value' => 0],
-                2 => ['class' => 'button-2', 'text' => 'ver observación', 'value' => 2],
+                0 => ['class' => 'button-1', 'text' => 'Aceptar', 'value' => 1],
+                1 => ['class' => 'button-0', 'text' => 'Pendiente', 'value' => 0],
+                2 => ['class' => 'button-2', 'text' => 'Ver observación', 'value' => 2],
             ];
         @endphp
     </header>
@@ -47,10 +47,10 @@
                 <thead class="head_table">
                     <tr>
                         <th class="hidden">IdDoc</th>
-                        <th>Nombre de documento</th>
-                        <th>estado</th>
-                        <th>archivo</th>
-                        <th>acciones</th>
+                        <th>Registros</th>
+                        <th>Estado</th>
+                        <th>Archivo</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody class="body_table">
@@ -74,8 +74,7 @@
                             <td>
                                 @foreach ($documents as $doc)
                                     @if ($doc->IdTypeDoc == $type->IdTypeDoc)
-                                        <a href="{{ route('SeeDocument', $doc->NameFile) }}" class="button">ver
-                                            documento</a>
+                                        <a href="{{ route('SeeDocument', $doc->NameFile) }}" class="button">Ver</a>
                                         <input type="text" value="{{ $doc->NameFile }}"
                                             class="border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-color focus:border-primary-color dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-color dark:focus:border-primary-color">
                                     @endif
@@ -106,7 +105,7 @@
                                                             data-modal-target="authentication-modals{{ $index }}"
                                                             data-modal-toggle="authentication-modals{{ $index }}"
                                                             class="button-2">
-                                                            observación
+                                                            Observación
                                                         </button>
                                                         @include('plantillas.commun.modal-form-comments')
                                                     @endif

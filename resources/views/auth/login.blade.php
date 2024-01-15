@@ -22,23 +22,23 @@
             <div class="form__login">
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
-                    <label class="title">Bienvenido</label>
+                    <label class="subtitle text-center">Bienvenido a la Plataforma de Estancias,Estadías y Servicio social</label>
                     <label for="email-user" class="subtitle">Correo</label>
                     <input type="email" name="email" id="email">
                     <label for="password-user" class="subtitle">Contraseña</label>
                     <input type="password" name="password" id="password">
                     <a href="#" data-modal-target="defaultModal" data-modal-toggle="defaultModal"
-                        class="form__login__href">Olvidastes tu
+                        class="form__login__href">¿Olvidastes tu
                         contraseña?</a>
                     <button class="button">
                         Iniciar Sesion
                     </button>
                     <div class="form__login__help1">
-                        No tienes cuenta? <a href="#" class="form__login__help2"
+                        ¿No tienes cuenta o no puedes ingresar? <a href="#" class="form__login__help2"
                             data-modal-target="defaultModal" data-modal-toggle="defaultModal">
                             Obtener Acceso</a>
                     </div>
-                </form>
+                </form>|
             </div>
         </div>
     </section>

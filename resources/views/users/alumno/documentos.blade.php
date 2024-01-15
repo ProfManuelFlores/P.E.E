@@ -31,16 +31,16 @@
             <table class="w-3/4 text-left">
                 <thead class="head_table">
                     <tr>
-                        <th class="Documentos_alumno_contents_rows">Documento</th>
-                        <th class="Documentos_alumno_contents_rows">Formato</th>
-                        <th class="Documentos_alumno_contents_rows">Estado</th>
+                        <th class="Documentos_alumno_contents_rows">Registros</th>
+                        <th class="Documentos_alumno_contents_rows">Formatos</th>
+                        <th class="Documentos_alumno_contents_rows">Estados</th>
                         <th class="Documentos_alumno_contents_rows">Acciones</th>
                     </tr>
                 </thead>
                 <tbody class="">
                     @foreach ($formatos as $index => $formato)
-                        @if ($formato->Name != 'Guia de uso')
-                            @if (($formato->IdTypeDoc >= 5 && $proceso->IdProcess == 4) || $formato->IdTypeDoc < 5)
+                        @if ($formato->Name != 'Guia de uso de la plataforma')
+                            @if (($formato->IdTypeDoc >= 5 && $proceso->IdProcess == 5) || $formato->IdTypeDoc < 5)
                                 <tr>
                                     <td class="Documentos_alumno_contents_rows">{{ $formato->Desc_Document }}</td>
                                     <td class="Documentos_alumno_contents_rows">
@@ -51,7 +51,7 @@
                                     <td class="Documentos_alumno_contents_rows">
                                         @include('plantillas.commun.modal-statusdoc')
                                         <button class="button" data-modal-target="authentication-modalstatus{{ $index }}"
-                                            data-modal-toggle="authentication-modalstatus{{ $index }}">Ver Estados</button>
+                                            data-modal-toggle="authentication-modalstatus{{ $index }}">Ver</button>
                                     </td>
                                     <td class="flex Documentos_alumno_contents_rows">
                                         @if (count($DocumentosAlumno->where('IdTypeDoc', $formato->IdFormat)) == 0)
@@ -100,7 +100,10 @@
             </table>
         </div>
         <div class="text-center">
-            <a href="{{route('testcd',[$proceso->IdProcess])}}" class="navbar_content_links_pages"><button class="button">llenar cedula de registro</button></a>
+            <a href="{{route('testcd',[$proceso->IdProcess])}}" class="navbar_content_links_pages"><button class="button">Llenar cédula de registro</button></a>
+        </div>
+        <div class="text-center py-8">
+            <a href="https://forms.gle/oxQtwVKUHPug2dUn9" class="navbar_content_links_pages"><button class="button">Realizar Evaluación Empresarial Estancias y Estadías</button></a>
         </div>
     </section>
 </body>
