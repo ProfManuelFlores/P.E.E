@@ -289,11 +289,12 @@ Route::get('/perfil', function(){
     $studentdata = Student::find($userdata->email);
     $enterprise = Enterprise_adviser::find($userdata->email);
     $academic = Academic_adviser::find($userdata->email);
+    $carrier = carrier::all();
     $Degree = Degree::all();
     $Genre = Gender::all();
     $enterprises = Enterprise::all();
     $Knowledge = Area_Knowledge::all();
-    return view('users.perfil', compact('userdata','studentdata','Degree','Genre','Knowledge','enterprises','enterprise','academic'));
+    return view('users.perfil', compact('userdata','studentdata','Degree','Genre','Knowledge','enterprises','enterprise','academic','carrier'));
 })
 ->name('perfil');
 

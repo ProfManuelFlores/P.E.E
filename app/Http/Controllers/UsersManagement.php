@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Academic_adviser;
+use App\Models\Enterprise_adviser;
+use App\Models\Student;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -67,14 +70,31 @@ class UsersManagement extends Controller
                 $rowCount = 0;
         
                 foreach ($records as $record) {
-                    User::firstOrCreate(
+                    $UserRecentlyCreated = User::firstOrCreate(
                         ['email' => $record['email']],
                         [
                             'role' => $record['rol'],
-                            'password' => Hash::make($record['matricula'])
+                            'password' => Hash::make($record['matricula'] ?? 'upqroogeneral')
                         ]
                     );
-        
+                    if($UserRecentlyCreated->role = 1){
+
+                    }elseif($UserRecentlyCreated->role = 2){
+                        Student::firstOrCreate(
+                            ['user' => $record['email']],
+                            ['Tuition' => $record['matricula']]
+                        );
+                    }elseif($UserRecentlyCreated->role = 3){
+                        Enterprise_adviser::firstOrCreate(
+                            [],
+                            []
+                        );
+                    }elseif($UserRecentlyCreated->role = 4){
+                        Academic_adviser::firstOrCreate(
+                            [],
+                            []
+                        );
+                    }
                     $rowCount++;
         
                     if ($rowCount == $batchSize) {

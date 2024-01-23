@@ -15,6 +15,7 @@
 </head>
 
 <body>
+    @include('sweetalert::alert')
     @admin()
         @include('plantillas.admin.navbar')
     @endadmin

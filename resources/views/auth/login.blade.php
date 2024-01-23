@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    @include('sweetalert::alert')
     <header>
 
     </header>
@@ -31,7 +32,7 @@
                         class="form__login__href">¿Olvidastes tu
                         contraseña?</a>
                     <button class="button">
-                        Iniciar Sesion
+                        Iniciar Sesión
                     </button>
                     <div class="form__login__help1">
                         ¿No tienes cuenta o no puedes ingresar? <a href="#" class="form__login__help2"
