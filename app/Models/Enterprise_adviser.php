@@ -14,6 +14,10 @@ class Enterprise_adviser extends Model
     public $primaryKey = 'user';
     public $table = 'enterprise_Adviser';
     public $keyType = 'string';
+    protected $fillable = [
+        'user',
+        'IdEnterpriseAdviser'
+    ];
     public function DataUser(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user');

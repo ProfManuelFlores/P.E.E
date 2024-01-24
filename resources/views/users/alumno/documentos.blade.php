@@ -31,9 +31,9 @@
             <table class="w-3/4 text-left">
                 <thead class="head_table">
                     <tr>
-                        <th class="Documentos_alumno_contents_rows">Registros</th>
-                        <th class="Documentos_alumno_contents_rows">Formatos</th>
-                        <th class="Documentos_alumno_contents_rows">Estados</th>
+                        <th class="Documentos_alumno_contents_rows">Registro</th>
+                        <th class="Documentos_alumno_contents_rows">Formato</th>
+                        <th class="Documentos_alumno_contents_rows">Estado</th>
                         <th class="Documentos_alumno_contents_rows">Acciones</th>
                     </tr>
                 </thead>

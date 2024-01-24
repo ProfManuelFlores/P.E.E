@@ -14,6 +14,10 @@ class Academic_adviser extends Model
     public $table = 'academic_adviser';
     public $primaryKey = 'user';
     public $keyType = 'string';
+    protected $fillable = [
+        'user',
+        'IdAcademicAdvisor'
+    ];
     public function DataUser(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user');

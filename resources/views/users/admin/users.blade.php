@@ -17,7 +17,7 @@
 <body>
     @include('plantillas.admin.navbar')
     <header>
-
+        @include('sweetalert::alert')
     </header>
     <section>
         <div class="">

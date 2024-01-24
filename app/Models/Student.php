@@ -12,6 +12,10 @@ class Student extends Model
     public $timestamps = false;
     protected $table = 'student';
     protected $primaryKey = 'user';
+    protected $fillable = [
+        'user',
+        'Tuition'
+    ];
     public function Datacarrier(){
         return $this->hasOne(carrier::class);
     }
