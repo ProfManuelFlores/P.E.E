@@ -29,7 +29,7 @@
                     <label for="password-user" class="subtitle">Contraseña</label>
                     <input type="password" name="password" id="password">
                     <a href="#" data-modal-target="defaultModal" data-modal-toggle="defaultModal"
-                        class="form__login__href">¿Olvidastes tu
+                        class="form__login__href">¿Olvidaste tu
                         contraseña?</a>
                     <button class="button">
                         Iniciar Sesión

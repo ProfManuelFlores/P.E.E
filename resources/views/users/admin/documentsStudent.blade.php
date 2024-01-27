@@ -132,15 +132,6 @@
                                                         </button>
                                                         @include('plantillas.commun.modal-form-comments')
                                                     @endif
-                                                    @if ($doc->IdStatusDocAcademic != 2)
-                                                        <button
-                                                            data-modal-target="authentication-modals{{ $index }}"
-                                                            data-modal-toggle="authentication-modals{{ $index }}"
-                                                            class="button-2">
-                                                            observación
-                                                        </button>
-                                                        @include('plantillas.commun.modal-form-comments')
-                                                    @endif
                                                 @endif
                                             @endif
                                         @endacademic
@@ -159,15 +150,6 @@
                                                             data-modal-toggle="authentication-modals{{ $index }}"
                                                             class="button-2">
                                                             ver observación
-                                                        </button>
-                                                        @include('plantillas.commun.modal-form-comments')
-                                                    @endif
-                                                    @if ($doc->IdStatusDocAcademic != 2)
-                                                        <button
-                                                            data-modal-target="authentication-modals{{ $index }}"
-                                                            data-modal-toggle="authentication-modals{{ $index }}"
-                                                            class="button-2">
-                                                            observación
                                                         </button>
                                                         @include('plantillas.commun.modal-form-comments')
                                                     @endif
