@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Log In</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="https://www.google.com/recaptcha/api.js"></script>
 </head>
 
 <body>
@@ -21,18 +22,24 @@
                     alt="Logo Universidad Politecnica De Quintana Roo">
             </div>
             <div class="form__login">
-                <form method="POST" action="{{ route('login') }}">
+                <form method="POST" action="{{ route('login') }}" id="login">
                     @csrf
-                    <label class="subtitle text-center">Bienvenido a la Plataforma de Estancias,Estadías y Servicio social</label>
+                    <label class="subtitle text-center">Bienvenido a la Plataforma de Estancias,Estadías y Servicio
+                        social</label>
                     <label for="email-user" class="subtitle">Correo</label>
-                    <input type="email" name="email" id="email">
+                    <input type="email" name="email" value="{{ old('email') }}" id="email">
+                    @error('email')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
                     <label for="password-user" class="subtitle">Contraseña</label>
                     <input type="password" name="password" id="password">
                     <a href="#" data-modal-target="defaultModal" data-modal-toggle="defaultModal"
                         class="form__login__href">¿Olvidaste tu
                         contraseña?</a>
-                    <button class="button">
-                        Iniciar Sesión
+                    <button class="g-recaptcha button" 
+                        data-sitekey="{{ config('services.recaptch.site_key') }}" 
+                        data-callback='onSubmit'
+                        data-action='Login'>Iniciar Sesion
                     </button>
                     <div class="form__login__help1">
                         ¿No tienes cuenta o no puedes ingresar? <a href="#" class="form__login__help2"
@@ -44,6 +51,11 @@
         </div>
     </section>
     @include('plantillas.commun.modals')
+    <script>
+        function onSubmit(token) {
+            document.getElementById("login").submit();
+        }
+    </script>
 </body>
 
 </html>

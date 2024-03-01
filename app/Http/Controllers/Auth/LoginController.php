@@ -4,9 +4,13 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\Rules\recaptcha;
+use Closure;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class LoginController extends Controller
@@ -43,9 +47,11 @@ class LoginController extends Controller
     protected function login(Request $request)
     {
         $credentials = $request->validate([
-            'email' => 'required|string',
-            'password' => 'required'
+            'email' => 'required|email',
+            'password' => 'required',
+            'g-recaptcha-response' => ['required', new recaptcha]
         ]);
+        unset($credentials['g-recaptcha-response']);
         if (Auth::attempt($credentials)) {
             $user_role = Auth::user()->role;
             switch ($user_role) {
@@ -68,7 +74,7 @@ class LoginController extends Controller
             }
         } else {
             Alert::Error('error','Contraseña o usuario incorrecto');
-            return redirect('/login');
+            return redirect('/login')->withInput();
         }
     }
 }
