@@ -46,6 +46,9 @@
                             data-modal-target="defaultModal" data-modal-toggle="defaultModal">
                             Obtener Acceso</a>
                     </div>
+                    <div>
+                        {{ $errors->first('g-recaptcha-response')}} 
+                    </div>
                 </form>|
             </div>
         </div>
@@ -53,6 +56,7 @@
     @include('plantillas.commun.modals')
     <script>
         function onSubmit(token) {
+            document.getElementById("g-recaptcha-response").value = token;
             document.getElementById("login").submit();
         }
     </script>

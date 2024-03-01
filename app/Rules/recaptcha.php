@@ -20,7 +20,7 @@ class recaptcha implements ValidationRule
             'response' => $value
         ]);
         if(!$g_response->json('success')){
-            $fail('la recaptcha ha fallado, favor de intentar en un rato');
+            $fail('El recaptcha ha fallado, favor de intentar en un rato');
         }
     }
 }
