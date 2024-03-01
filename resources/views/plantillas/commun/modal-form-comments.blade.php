@@ -21,7 +21,7 @@
                         @csrf
                         <div class="py-2">
                             <p>Comentario</p>
-                            <textarea name="comment" id="comment" cols="20" rows="5">{{ $doc->comment }}</textarea>
+                            <textarea name="comment" id="comment" cols="20" rows="5" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">{{ $doc->comment }}</textarea>
                             <input class="hidden" type="text" name="user" id="user" value="{{$user}}">
                         </div>
                         @if ($doc->deleted_at == null)
@@ -36,7 +36,7 @@
                         @csrf
                         <div class="py-2">
                             <p>Comentario de asesor académico</p>
-                            <textarea name="comment3" id="comment3" cols="20" rows="5">{{ $doc->comment_Academic }}</textarea>
+                            <textarea name="comment3" id="comment3" cols="20" rows="5" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">{{ $doc->comment_Academic }}</textarea>
                             <input class="hidden" type="text" name="user" id="user" value="{{$user}}">
                         </div>
                         @if ($doc->deleted_at == null)
@@ -51,7 +51,7 @@
                         @csrf
                         <div class="py-2">
                             <p>Comentario de asesor empresarial</p>
-                            <textarea name="comment2" id="comment2" cols="20" rows="5">{{ $doc->comment_Enterprise }}</textarea>
+                            <textarea name="comment2" id="comment2" cols="20" rows="5" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">{{ $doc->comment_Enterprise }}</textarea>
                             <input class="hidden" type="text" name="user" id="user" value="{{$user}}">
                         </div>
                         @if ($doc->deleted_at == null)
@@ -66,15 +66,15 @@
                         @csrf
                         <div class="py-2">
                             <p>Comentario de administrador</p>
-                            <textarea name="comment" id="comment" cols="20" rows="5" readonly>{{ $doc->comment }}</textarea>
+                            <textarea name="comment" id="comment" cols="20" rows="5" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" readonly>{{ $doc->comment }}</textarea>
                         </div>
                         <div class="py-2">
                             <p>Comentario de asesor académico</p>
-                            <textarea name="comment" id="comment" cols="20" rows="5" readonly>{{ $doc->comment_Academic }}</textarea>
+                            <textarea name="comment" id="comment" cols="20" rows="5" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" readonly>{{ $doc->comment_Academic }}</textarea>
                         </div>
                         <div class="py-2">
                             <p>Comentario de asesor empresarial</p>
-                            <textarea name="comment" id="comment" cols="20" rows="5" readonly>{{ $doc->comment_Enterprise }}</textarea>
+                            <textarea name="comment" id="comment" cols="20" rows="5" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" readonly>{{ $doc->comment_Enterprise }}</textarea>
                         </div>
                     </form>
                 @endstudent

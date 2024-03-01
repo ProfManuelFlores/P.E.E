@@ -46,7 +46,7 @@ class enterpriseManagement extends Controller
                 $rowCount = 0;
                 foreach($records as $record){
                     Enterprise::firstOrCreate([
-                        'Rcf' => $record['rfc'],
+                        'Rcf' => $record['Identificador'],
                         'Name' => $record['nombre']
                     ]);
                     $rowCount++;

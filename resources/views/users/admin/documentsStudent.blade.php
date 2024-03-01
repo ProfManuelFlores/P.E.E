@@ -75,7 +75,7 @@
                             <td>
                                 @foreach ($documents as $doc)
                                     @if ($doc->IdTypeDoc == $type->IdTypeDoc)
-                                        <a href="{{ route('SeeDocument', $doc->NameFile) }}" class="button">Ver</a>
+                                        <a href="{{ route('SeeDocument', $doc->NameFile) }}" class="button" target="blank">Ver</a>
                                         <input type="text" value="{{ $doc->NameFile }}"
                                             class="border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-color focus:border-primary-color dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-color dark:focus:border-primary-color">
                                     @endif
@@ -187,7 +187,7 @@
                                 @endif
                             @endforeach
                             <td>
-                                <a href="{{ route('SeeDocument', $doc->NameFile) }}" class="button">ver
+                                <a href="{{ route('SeeDocument', $doc->NameFile) }}" class="button" target="blank">ver
                                     documento</a>
                                 <input type="text" value="{{ $doc->NameFile }}"
                                     class="border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-color focus:border-primary-color dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-color dark:focus:border-primary-color">

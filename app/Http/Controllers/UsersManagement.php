@@ -18,7 +18,13 @@ class UsersManagement extends Controller
 {
     public function SeeAllUsers(){
         $allusers = User::all();
-        return view('users.admin.users',compact('allusers'));
+        $roles = [
+            1 => 'Administrador',
+            2 => 'Estudiantes',
+            3 => 'Asesor Empresarial',
+            4 => 'Asesor Academico',
+        ];    
+        return view('users.admin.users',compact('allusers', 'roles'));
     }
 
     public function UpdateDataUser(Request $request){

@@ -36,7 +36,7 @@
                     @foreach ($allusers as $index => $user)
                         <tr>
                             <td>{{ $user->email }}</td>
-                            <td class="hidden md:inline-flex">{{ $user->role }}</td>
+                            <td class="hidden md:inline-flex">{{ $roles[$user->role] }}</td>
                             <td>
                                 <div class="action_buttons">
                                     @include('plantillas.commun.modal-form-edituser')

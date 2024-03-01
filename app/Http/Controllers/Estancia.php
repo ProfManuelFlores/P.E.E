@@ -14,6 +14,8 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
+
 
 class Estancia extends Controller
 {
@@ -71,17 +73,25 @@ class Estancia extends Controller
         $ProcessUploadDocument = Process::find(Auth::user()->email . $PageProcess);
         if($ProcessUploadDocument == true){
             try{
+                $validator = Validator::make($request->all(), [
+                    'doc' => 'required|mimes:pdf|max:10240',
+                ]);
+    
+                if ($validator->fails()) {
+                    Alert::error('Error', 'Por favor, carga un archivo PDF válido.');
+                    return redirect('/documentos_proceso/' . $PageProcess);
+                }
                 if($request->hasFile('doc')){
-                    $path=public_path().'/documents/';
-                    $archivo = $request->file('doc');
-                    $archivo->move($path,$_FILES['doc']['name']);
+                    $path = public_path('/documents/');
+                    $fileName = Auth::user()->email . '_' . $PageProcess . '_' . $formatdesired . '_' . time() . '.pdf';
+                    $request->file('doc')->move($path, $fileName);
                     $document = new Document();
                     $detail_document = new Detail_Document();
                     $document->IdTypeDoc = $formatdesired;
                     $document->IdStatusDoc = 0;
                     $document->IdStatusDocAcademic = 0;
                     $document->IdStatusDocEnterprise = 0;
-                    $document->NameFile =$_FILES['doc']['name'];
+                    $document->NameFile = $fileName;
                     $document->save();
                     $detail_document->IdDoc = $document->getKey();
                     $detail_document->IdPro = Auth::user()->email . $PageProcess;
@@ -119,9 +129,14 @@ class Estancia extends Controller
 
     }
     public function SeeDocument($NameFile){
-        $name = public_path('documents/'.$NameFile);
-        if(File::exists($name)){
-            return response()->file($name);
+        $path = public_path('documents/' . $NameFile);
+        if(File::exists($path)){
+            $headers = [
+                'Content-Type' => 'application/pdf',
+                'Content-Disposition' => 'inline; filename="' . $NameFile . '"',
+            ];
+    
+            return response()->file($path, $headers);
         }else {
             Alert::Error('Error','lo siento, al parecer el archivo se perdio');
             return back();
