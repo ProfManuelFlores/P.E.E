@@ -33,7 +33,7 @@ class PeriodManagement extends Controller
             return redirect('/ListPeriod');
         }catch (Exception $e){
             $error = $e->getMessage();
-            dd($error);
+            Alert::Error('error','al parecer el periodo ya esta iniciado');
         }
     }
     public function ChangeStatusSubPeriod($id, $subperiod){

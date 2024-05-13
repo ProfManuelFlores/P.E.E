@@ -13,12 +13,17 @@
             <h1 class="title">Universidad Politecnica de Quintana Roo</h1>
             <h1 class="title">Direccion de vinculacion, difusion y extension universitaria</h1>
             <h1 class="title">Definicion de documento</h1>
+            <div class="">
+                <h3></h3>
+                <h3></h3>
+            </div>
         </div>
     </header>
-    <section class="p-2 md:p-10">
-        <div class="grid grid-rows-5">
-            
-        </div>
+    <section>
+
     </section>
+    <footer>
+
+    </footer>
 </body>
 </html>

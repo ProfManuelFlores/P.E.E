@@ -140,6 +140,10 @@ Route::post('/CreateNewUser', [UsersManagement::class, 'CreateUserIndividual'])
 ->name('CreateUserIn')
 ->middleware('admin');
 
+Route::get('/DeleteUserS/{user}', [UsersManagement::class, 'DeleteUser'])
+->name('DeleteUserS')
+->middleware('admin');
+
 Route::post('/CreateNewUsers', [UsersManagement::class, 'CreateUsersMassive'])
 ->name('CreateUserMul')
 ->middleware('admin');

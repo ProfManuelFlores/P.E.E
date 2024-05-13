@@ -51,6 +51,11 @@ class UsersManagement extends Controller
         
     }
 
+    public function DeleteUser($user){
+        $DeletedUser = User::find($user)->first();
+        
+    }
+
     public function CreateUserIndividual(Request $request){
         try{
             $this->validate(request(), [

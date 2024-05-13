@@ -42,7 +42,7 @@
                                     @include('plantillas.commun.modal-form-edituser')
                                     <button class="button" data-modal-target="authentication-modal{{ $index }}"
                                         data-modal-toggle="authentication-modal{{ $index }}">Editar</button>
-                                    <button class="button">Eliminar</button>
+                                    <a href="{{ route('DeleteUserS', $user->email) }}"><button class="button">Eliminar</button></a>
                                 </div>
                             </td>
                         </tr>

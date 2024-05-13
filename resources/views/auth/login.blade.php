@@ -10,7 +10,7 @@
     <script src="https://www.google.com/recaptcha/api.js"></script>
 </head>
 
-<body>
+<body style="background-image: url('{{asset('assets/images/LogoCafe.jpg')}}'); background-size: cover; background-position: center center; background-repeat: no-repeat; background-attachment: fixed;">
     @include('sweetalert::alert')
     <header>
 

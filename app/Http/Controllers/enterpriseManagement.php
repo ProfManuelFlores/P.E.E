@@ -29,7 +29,7 @@ class enterpriseManagement extends Controller
             return redirect('/EnterpriseManagement');
         } catch(Exception $e){
             $error = $e->getMessage();
-            dd($error);
+            Alert::Success('Error','los datos de la empresa no pudieron ser actualizados, intente mas tarde');
             return redirect('/EnterpriseManagement');
         }
     }

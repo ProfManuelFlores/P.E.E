@@ -10,6 +10,8 @@
 </head>
 
 <body>
+    @include('plantillas.alumno.navbar')
+    @include('sweetalert::alert')
     <header>
         <div class="text-center py-10">
             <h1 class="title">Universidad Politécnica de Quintana Roo</h1>
@@ -83,7 +85,7 @@
                     </div>
                     <div class="text-center py-2 grid grid-cols-1 md:gap-4 md:grid-cols-4 md:py-5">
                         <div class="grid grid-cols-1 md:col-span-2">
-                            <input type="text" name="NombreEmpresa" id="NombreEmpresa">
+                            <input type="text" name="NombreEmpresa" id="NombreEmpresa" value="{{ $dataenterprise->Name }}">
                             <label for="">Nombre</label>
                         </div>
                         <div class="grid grid-cols-1">
@@ -93,7 +95,7 @@
                         <div class="grid grid-cols-1">
                             <select name="tamañoempresa" id="tamañoempresa">
                                 @foreach ($Size as $s)
-                                    <option value="{{$s->Desc_size}}" {{ $s->IdSize == $dataenterprise->IdSize ? 'selected' : '' }}>{{$s->Desc_size}}</option>
+                                    <option value="{{$s->Desc_size}}" {{ $s->IdSize == $dataenterprise->IdSize ? 'selected' : '' }}>{{$s->Desc_size}}</option>  --}}
                                 @endforeach
                             </select>
                             <label for="">Tamaño</label>

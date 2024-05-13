@@ -103,6 +103,9 @@
             <a href="{{route('testcd',[$proceso->IdProcess])}}" class="navbar_content_links_pages"><button class="button">Llenar cédula de registro</button></a>
         </div>
         <div class="text-center py-8">
+            <a href="{{route('testcd2',[$proceso->IdProcess])}}" class="navbar_content_links_pages"><button class="button">Llenar definicion de proyecto</button></a>
+        </div>
+        <div class="text-center py-8">
             <a href="https://forms.gle/oxQtwVKUHPug2dUn9" class="navbar_content_links_pages"><button class="button">Realizar Evaluación Empresarial Estancias y Estadías</button></a>
         </div>
     </section>

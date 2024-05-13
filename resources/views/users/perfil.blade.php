@@ -49,7 +49,7 @@
                         <div>
                             <label for="phone" class="label_line">Matrícula</label>
                             <input type="tel" id="Tuition" name="Tuition" value="{{ $studentdata->Tuition ?? '' }}"
-                                class="inputs_line" placeholder="2000000000" pattern="[0-9]{10}">
+                                class="inputs_line" placeholder="2000000000" pattern="[0-9]{9}">
                         </div>
                         <div>
                             <label for="label_line" class="label_line">Genero</label>
@@ -82,7 +82,7 @@
                         <label for="label_line" class="label_line">Programa Educativo</label>
                         <select name="Indigenous_Language" id="Indigenous_Language" class="select_line">
                             @foreach ($carrier as $c)
-                                <option value="{{}}"
+                                <option value="{{$c->IdCarrier}}"
                                     {{ $c->IdCarrier == $studentdata->IdCarrier ? 'selected' : '' }}>
                                     {{ $c->Desc_Carrier }}</option>
                             @endforeach
