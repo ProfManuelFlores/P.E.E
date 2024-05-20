@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Academic_adviser;
 use App\Models\Enterprise_adviser;
+use App\Models\Process;
 use App\Models\Student;
 use App\Models\User;
 use Exception;
@@ -52,8 +53,20 @@ class UsersManagement extends Controller
     }
 
     public function DeleteUser($user){
-        $DeletedUser = User::find($user)->first();
-        
+        $DeletedUser = User::find($user)->email;
+        try{
+            Academic_adviser::where('user',$user)->delete();
+            Enterprise_adviser::where('user',$user)->delete();
+            Process::where('users',$user)->delete();
+            User::where('email',$user)->delete();
+            Student::where('user',$user)->delete();
+            Alert::Success('Exito','El usuario a sido elminado');
+            return redirect('/ListUser')->with('sucess','se ha creado el usuario con exito');
+        } catch (Exception $errors){
+            Alert::Error('Error','Al parecer ocurrio un error intentalo mas tarde');
+            $error = $errors->getMessage();
+            return redirect('/ListUser')->with('error',$error);
+        }
     }
 
     public function CreateUserIndividual(Request $request){

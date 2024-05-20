@@ -25,3 +25,11 @@
     border-radius:10px;
     @apply w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
 }
+
+.form_general .CenterTitle{
+    @apply place-content-center
+}
+
+.form_general .border1{
+    @apply border-solid border-2 border-gray-400
+}

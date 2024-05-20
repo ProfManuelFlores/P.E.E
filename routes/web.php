@@ -215,6 +215,9 @@ Route::post('/updatepassword', [profile::class, 'ChangePassword'])
 Route::post('/pdfgenerate', [pdfgenerator::class, 'generatepdfregister'])
 ->name('pdfgenerateced');
 
+Route::post('/pdfgeneratedef', [pdfgenerator::class, 'generatepdfdefinition'])
+->name('generatepdfdef');
+
 /*
 ------------------------------------------
 |             Redirections               |
@@ -323,6 +326,9 @@ Route::get('/cd/{process}', function($processIdType){
     return view('plantillas.alumno.ceduladeregistro', compact('datauser','datastudent','carriers','process','dataenterpriseco','dataacademicco','dataenterprise','Degree','Size'));
 })->name('testcd');
 
-Route::get('/cd2', function(){
-    return view('plantillas.alumno.definiciondeproyecto');
+Route::get('/cd2/{process}', function($processIdType){
+    $lugar = "Cancun, Quintana Roo";
+    $periodos = Type_Process::where('IdProcess', $processIdType)->get()->first();
+    $fecha = Carbon::now()->format('d-m-Y');
+    return view('plantillas.alumno.definiciondeproyecto', compact('fecha','periodos','lugar'));
 })->name('testcd2');

@@ -13,7 +13,10 @@ class pdfgenerator extends Controller
         $pdf = Pdf::loadView('plantillas.alumno.cedulapdf',compact('request'));
         return $pdf->download();
     }
-    public function generatepdfdefinition(){
-
+    public function generatepdfdefinition(Request $request){
+        $pdf = Pdf::loadView('plantillas.alumno.definicionpdf',compact('request'));
+        //return view('plantillas.alumno.definicionpdf');
+        return$pdf->download();
     }
+
 }
