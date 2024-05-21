@@ -31,10 +31,10 @@
                                     <span class="text-lg font-semibold">+</span>
                                 </div>
                                 <div class="p-4 space-y-2 hidden">
-                                    @foreach ($fields as $field)
+                                    @foreach ($fields as $index => $field)
                                         <div>
-                                            <label class="text-sm font-medium">{{ $field }}</label>
-                                            <input type="text" class="block w-full mt-1 text-sm border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                                            <label class="text-sm font-medium" for="{{ strtolower($section) }}_{{ $index }}">{{ $field }}</label>
+                                            <input type="text" id="{{ strtolower($section) }}_{{ $index }}" name="{{ strtolower($section) }}_{{ $index }}" class="block w-full mt-1 text-sm border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
                                         </div>
                                     @endforeach
                                 </div>
@@ -56,10 +56,10 @@
                                         <h4 class="text-md font-semibold">Duración</h4>
                                     </div>
                                     <div class="p-4 space-y-2">
-                                        @foreach(['Fecha de inicio', 'Fecha de fin', 'Horas'] as $field)
+                                        @foreach(['Fecha de inicio', 'Fecha de fin', 'Horas'] as $index => $field)
                                             <div>
-                                                <label class="text-sm font-medium">{{ $field }}</label>
-                                                <input type="{{ $field === 'Horas' ? 'number' : 'date' }}" class="block w-full mt-1 text-sm border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                                                <label class="text-sm font-medium" for="dateS_1_{{ $index }}">{{ $field }}</label>
+                                                <input type="{{ $field === 'Horas' ? 'number' : 'date' }}" id="dateS_1_{{ $index }}" name="dateS_1_{{ $index }}" class="block w-full mt-1 text-sm border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
                                             </div>
                                         @endforeach
                                     </div>
@@ -69,13 +69,13 @@
                                         <h4 class="text-md font-semibold">Descripción de Competencias</h4>
                                     </div>
                                     <div class="p-4 space-y-2">
-                                        @foreach(['Nombre de la etapa', 'Competencia'] as $field)
+                                        @foreach(['Nombre de la etapa', 'Competencia'] as $index => $field)
                                             <div>
-                                                <label class="text-sm font-medium">{{ $field }}</label>
+                                                <label class="text-sm font-medium" for="compS_1_{{ $index }}">{{ $field }}</label>
                                                 @if($field === 'Competencia')
-                                                    <textarea class="block w-full h-24 mt-1 text-sm border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"></textarea>
+                                                    <textarea id="compS_1_{{ $index }}" name="compS_1_{{ $index }}" class="block w-full h-24 mt-1 text-sm border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"></textarea>
                                                 @else
-                                                    <input type="text" class="block w-full mt-1 text-sm border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                                                    <input type="text" id="compS_1_{{ $index }}" name="compS_1_{{ $index }}" class="block w-full mt-1 text-sm border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
                                                 @endif
                                             </div>
                                         @endforeach
@@ -86,14 +86,15 @@
                     </div>
                     <div class="py-4"></div>
                     <div id="additional-info" class="grid grid-cols-1 gap-y-4">
-                        @foreach (['Actividades de Aprendizaje', 'Resultados de Aprendizaje', 'Evidencias', 'Instrumentos de Evaluación', 'Asignaturas', 'Topicos Recomendados', 'Estrategias Didacticas'] as $field)
+                        @foreach (['Actividades de Aprendizaje', 'Resultados de Aprendizaje', 'Evidencias', 'Instrumentos de Evaluación', 'Asignaturas', 'Topicos Recomendados', 'Estrategias Didacticas'] as $index => $field)
                             <div class="border1 rounded-md shadow-sm">
                                 <div class="flex items-center justify-between px-4 py-2 bg-gray-200 cursor-pointer" onclick="toggleCollapse(this)">
                                     <h3 class="text-lg font-semibold">{{ $field }}</h3>
                                     <span class="text-lg font-semibold">+</span>
                                 </div>
                                 <div class="p-4 space-y-4 hidden">
-                                    <textarea class="block w-full h-24 mt-1 text-sm border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"></textarea>
+                                    <label class="text-sm font-medium" for="info_{{ $index }}">{{ $field }}</label>
+                                    <textarea id="info-{{ $index }}" name="info_{{ $index }}" class="block w-full h-24 mt-1 text-sm border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"></textarea>
                                 </div>
                             </div>
                         @endforeach
@@ -114,6 +115,7 @@
 </body>
 <script>
     let projectCount = 1;
+    let fieldCount = 1;
 
     function toggleCollapse(element) {
         const content = element.nextElementSibling;
@@ -133,8 +135,15 @@
             projectCount++;
             const container = document.getElementById('project-info-container');
             const newProjectInfo = container.children[0].cloneNode(true);
-            newProjectInfo.querySelectorAll('input').forEach(input => input.value = '');
-            newProjectInfo.querySelectorAll('textarea').forEach(textarea => textarea.value = '');
+
+            newProjectInfo.querySelectorAll('input, textarea').forEach(input => {
+                input.value = '';
+                const oldId = input.id;
+                input.id = oldId.replace(/-\d+$/, '') + '_' + fieldCount;
+                input.name = oldId.replace(/-\d+$/, '') + '_' + fieldCount;
+                fieldCount++;
+            });
+
             newProjectInfo.querySelector('.hidden').classList.add('hidden'); // Hide the content
             newProjectInfo.id = `etapa-${projectCount}`;
             newProjectInfo.querySelector('h3').textContent = `Etapa ${projectCount}`;

@@ -1,132 +1,328 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form PDF</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Document</title>
     <style>
-        body {
-            font-family: 'DejaVu Sans', sans-serif;
-            font-size: 10px;
-        }
-        .table-form {
+
+                /* CSS para ajustar el tamaño del texto y la tabla */
+        .table {
             width: 100%;
-            border-collapse: collapse;
+            table-layout: fixed;
         }
-        .table-form th, .table-form td {
-            padding: 2px;
-            text-align: center;
-            vertical-align: middle;
-            border: 1px solid #000;
+
+        .table td, .table th {
+            padding: 5px;
+            word-wrap: break-word; /* Permite que el texto se ajuste dentro de la celda */
         }
-        .table-form textarea {
+
+        .datos-big {
             width: 100%;
-            padding: 2px;
-            font-size: 8px;
-            resize: none;
+            font-size: 12px; /* Ajusta el tamaño del texto dentro del textarea */
+            resize: none; /* Opcional: Evita que el usuario cambie el tamaño del textarea */
+            box-sizing: border-box; /* Asegura que el padding se incluya en el tamaño total del textarea */
         }
-        .table-form label {
-            margin-bottom: 0;
-            font-weight: bold;
-        }
+
         .text-center {
+            font-size: 12px; /* Ajusta el tamaño del texto */
+        }
+        .container {
+            position: relative;
+            width: 100%;
+        }
+
+        .datos {
+            width: 100%;
             text-align: center;
+            background-color: #E1E1E1;
+            border-bottom: 1px solid black;
         }
-        .p-2 {
-            padding: 2px;
+
+        .left,
+        .right {
+            position: absolute;
+            display: inline-block;
         }
-        .mx-auto {
-            margin: auto;
+
+        .left {
+            left: 0;
         }
-        .mt-3 {
-            margin-top: 10px;
+
+        .right {
+            right: 0;
+        }
+
+        .panel {
+            background-color: #7A2A05;
+            color: white;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        table td,
+        table th {
+            padding: 0;
+            margin: 0;
+        }
+
+        input {
+            padding: 0;
+            margin: 0;
         }
     </style>
 </head>
+
 <body>
     <main>
-        <p class="text-center"><b>Universidad Politécnica de Quintana Roo</b><br>Dirección de Vinculación, Difusión y Extensión Universitaria</p>
-        <div>
-            <div class="d-flex justify-content-between p-2">
-                <div>
-                    Estancia placeholder
+        <small>
+            <p class="text-center">
+                <b>Universidad Politécnica de Quintana Roo</b><br>
+                Dirección de Vinculación, Difusión y Extensión Universitaria
+            </p>
+            <small>
+                <div class="container text-center py-5">
+                    <div class="left"><b>Estancia:</b> <b>test</b></div>
+                    <div class="right"><b>Fecha y lugar:</b> <b>Cancun Quintana Roo {fecha}</b></div>
                 </div>
-                <div>
-                    Fecha y hora placeholder
-                </div>
+            </small>
+        </small>
+        <small>
+            <div class="generales">
+                <div class="panel">Datos Alumno:</div>
+                <table class="table table-borderless">
+                    <tr>
+                        <th>
+                            <div>
+                                <small>
+                                    <div class="text-center">Nombre</div>
+                                    <input type="text" class="datos-big" name="nombre" id="nombre"
+                                        value="{{ $request->alumno_0 }}">
+                                </small>
+                            </div>
+                        </th>
+                        <th>
+                            <div>
+                                <small>
+                                    <div class="text-center">Grupo</div>
+                                    <input type="text" class="datos-big" name="grupo" id="grupo" value="{{ $request->alumno_1 }}">
+                                </small>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th colspan="2">
+                            <div>
+                                <small>
+                                    <div class="text-center">Asesor Académico</div>
+                                    <input type="text" class="datos-big" name="asesor" id="asesor"
+                                        value="{{ $request->alumno_2 }}">
+                                </small>
+                            </div>
+                        </th>
+                    </tr>
+                </table>
+                <div class="panel">Datos Empresa:</div>
+                <table class="table table-borderless">
+                    <tr>
+                        <th>
+                            <div>
+                                <small>
+                                    <div class="text-center">Nombre</div>
+                                    <input type="text" class="datos-big" name="nombre" id="nombre"
+                                    value="{{ $request->empresa_0 }}">
+                                </small>
+                            </div>
+                        </th>
+                        <th>
+                            <div>
+                                <small>
+                                    <div class="text-center">Asesor Empresarial</div>
+                                    <input type="text" class="datos-big" name="grupo" id="grupo"
+                                        value="{{ $request->empresa_1 }}">
+                                </small>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th colspan="2">
+                            <div>
+                                <small>
+                                    <div class="text-center">Puesto</div>
+                                    <input type="text" class="datos-big" name="asesor" id="asesor"
+                                        value="{{ $request->empresa_2 }}">
+                                </small>
+                            </div>
+                        </th>
+                    </tr>
+                </table>
+                <div class="panel">Datos Proyecto:</div>
+                <table class="table table-borderless">
+                    <tr>
+                        <th colspan="2">
+                            <div>
+                                <small>
+                                    <div class="text-center">Nombre</div>
+                                    <input type="text" class="datos-big" name="nombre" id="nombre"
+                                        value="{{ $request->proyecto_0 }}">
+                                </small>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th colspan="2">
+                            <div>
+                                <small>
+                                    <div class="text-center">Asesor Empresarial</div>
+                                    <input type="text" class="datos-big" name="grupo" id="grupo"
+                                        value="{{ $request->proyecto_1 }}">
+                                </small>
+                            </div>
+                        </th>
+                    </tr>
+                </table>
             </div>
-            <table class="table-form mx-auto">
-                <thead>
-                    <tr>
-                        <th colspan="2">Datos del Alumno</th>
-                        <th colspan="2">Datos de Empresa</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><label for="nombreAlumno">Nombre:</label></td>
-                        <td><textarea id="nombreAlumno" rows="2"></textarea></td>
-                        <td><label for="nombreEmpresa">Nombre:</label></td>
-                        <td><textarea id="nombreEmpresa" rows="2"></textarea></td>
-                    </tr>
-                    <tr>
-                        <td><label for="grupo">Grupo:</label></td>
-                        <td><textarea id="grupo" rows="2"></textarea></td>
-                        <td><label for="asesorEmpresa">Asesor:</label></td>
-                        <td><textarea id="asesorEmpresa" rows="2"></textarea></td>
-                    </tr>
-                    <tr>
-                        <td><label for="asesorAcademico">Asesor:</label></td>
-                        <td><textarea id="asesorAcademico" rows="2"></textarea></td>
-                        <td><label for="puesto">Puesto:</label></td>
-                        <td><textarea id="puesto" rows="2"></textarea></td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table-form mx-auto mt-3">
-                <thead>
-                    <tr>
-                        <th colspan="4">Datos de Proyecto</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td colspan="2"><label for="nombreProyecto">Nombre:</label></td>
-                        <td colspan="2"><textarea id="nombreProyecto" rows="2"></textarea></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><label for="objetivoProyecto">Objetivo:</label></td>
-                        <td colspan="2"><textarea id="objetivoProyecto" rows="2"></textarea></td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table-form mx-auto mt-3">
-                <thead>
-                    <tr>
-                        <th>Descripción de etapas del proyecto</th>
-                        <th>Tiempo de duración de etapa</th>
-                        <th colspan="2">Descripción de la competencia</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td rowspan="4"><textarea rows="4" placeholder="Input 1"></textarea></td>
-                        <td colspan="2"><label for="semanas">Semanas</label></td>
-                        <td rowspan="4"><textarea rows="4" placeholder="Input 4"></textarea></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><label for="horas">Horas</label></td>
-                    </tr>
-                    <tr>
-                        <td><textarea id="semanas" rows="2" placeholder="Semanas"></textarea></td>
-                        <td><textarea id="horas" rows="2" placeholder="Horas"></textarea></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"></td> <!-- Empty row for spacing -->
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+            <small>
+                <div>
+                    <table class="table text-center">
+                        <tr class="border border-dark">
+                            <td class="border border-dark">Nombre de competencia</td>
+                            <td class="border border-dark" colspan="2">Duración</td>
+                            <td class="border border-dark">Descripción de competencia</td>
+                        </tr>
+                        <tr class="border border-dark">
+                            <td class="border border-dark"></td>
+                            <td class="border border-dark">semanas</td>
+                            <td class="border border-dark">horas</td>
+                            <td class="border border-dark"></td>
+                        </tr>
+                        <tr class="border border-dark">
+                            <td class="border border-dark"><textarea class="datos-big">{{ $request->compS_1_0 }}</textarea></td>
+                            <td class="border border-dark">
+                                <div>
+                                    {{ $request->dateS_1_0 }}
+                                </div>
+                                <div>
+                                    {{ $request->dateS_1_1 }}
+                                </div>
+                            </td>
+                            <td class="border border-dark">{{ $request->dateS_1_2 }}</td>
+                            <td class="border border-dark"><textarea class="datos-big">{{ $request->compS_1_1 }}</textarea></td>
+                        </tr>
+                        <tr class="border border-dark">
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                        </tr>
+                        <tr class="border border-dark">
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                        </tr>
+                        <tr class="border border-dark">
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                        </tr>
+                        <tr class="border border-dark">
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                        </tr>
+                        <tr class="border border-dark">
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                        </tr>
+                        <tr class="border border-dark">
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                        </tr>
+                        <tr class="border border-dark">
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                        </tr>
+                        <tr class="border border-dark">
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                        </tr>
+                        <tr class="border border-dark">
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                        </tr>
+                        <tr class="border border-dark">
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                        </tr>
+                        <tr class="border border-dark">
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                        </tr>
+                        <tr class="border border-dark">
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                        </tr>
+                        <tr class="border border-dark">
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                        </tr>
+                    </table>
+                </div>
+            </small>
+            <small>
+                <div class="adicionales">
+                    <table class="table text-center">
+                        <tr>
+                            <td class="border border-dark">Aprendizajes esperados</td>
+                            <td class="border border-dark">Evidencias</td>
+                            <td class="border border-dark">Instrumentos de evaluación</td>
+                            <td class="border border-dark">Materias</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                            <td class="border border-dark"><textarea></textarea></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="border border-dark">Extra</td>
+                            <td colspan="2" class="border border-dark">Extra 2</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="border border-dark"><textarea></textarea></td>
+                            <td colspan="2" class="border border-dark"><textarea></textarea></td>
+                        </tr>
+                    </table>
+                </div>
+            </small>
+        </small>
     </main>
 </body>
+
 </html>
